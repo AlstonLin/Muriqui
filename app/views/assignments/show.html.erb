@@ -1,0 +1,5 @@
+<h1><%= @assignment.name %></h1>
+<%= button_to "New Problem", new_assignment_problem_path(@assignment), :method => :get %>
+<% @assignment.problems.each do |p| %>
+<h2><%= link_to p.name, problem_path(@assignment, p) %></h2>
+<% end %>

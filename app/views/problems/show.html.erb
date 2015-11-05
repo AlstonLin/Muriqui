@@ -1,0 +1,5 @@
+<h1><%= @problem.name %></h1>
+<%= button_to "New Test Case", new_problem_test_case_path(@problem), :method => :get %>
+<% @problem.test_cases.each do |t| %>
+<h2><%= link_to "Test Case # #{t.id}", test_case_path(@problem, t) %></h2>
+<% end %>
