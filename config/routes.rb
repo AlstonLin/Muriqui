@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'courses#index'
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
+
+  resources :source_codes
+
   resources :courses do
     resources :assignments, shallow: true do
       resources :problems, shallow: true do
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

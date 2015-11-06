@@ -11,36 +11,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104062801) do
+ActiveRecord::Schema.define(version: 20151106001116) do
 
   create_table "assignments", force: :cascade do |t|
     t.string   "name"
     t.integer  "course_id"
-    t.integer  "problems_id"
     t.datetime "due"
+    t.integer  "creator_id"
   end
 
   create_table "courses", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
-    t.integer  "assigments_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "problems", force: :cascade do |t|
-    t.integer  "test_cases_id"
     t.integer  "assignment_id"
     t.string   "name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "creator_id"
   end
+
+  create_table "source_codes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "attachment"
+    t.integer  "owner_id"
+    t.integer  "problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "source_codes", ["owner_id"], name: "index_source_codes_on_owner_id"
+  add_index "source_codes", ["problem_id"], name: "index_source_codes_on_problem_id"
 
   create_table "test_cases", force: :cascade do |t|
     t.integer  "problem_id"
     t.string   "input"
     t.string   "output"
     t.boolean  "legal"
+    t.integer  "creator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "problem_id"
+    t.integer  "source_id"
+    t.integer  "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tests", ["owner_id"], name: "index_tests_on_owner_id"
+  add_index "tests", ["source_id"], name: "index_tests_on_source_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "image"
+    t.string   "token"
+    t.datetime "expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

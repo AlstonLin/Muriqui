@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+gem 'remotipart'
+gem 'responders'
+gem 'carrierwave'
+gem 'omniauth-facebook'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 # Use sqlite3 as the database for Active Record

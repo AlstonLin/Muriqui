@@ -8,6 +8,7 @@ class ProblemsController < ApplicationController
 	def create
 		@problem = @assignment.problems.build(problem_params)
 		@problem.assignment = @assignment
+		@problem.creator = current_user
 		respond_to do |format|
 			if @problem.save
 				format.html  { 
@@ -15,6 +16,7 @@ class ProblemsController < ApplicationController
 					alert:'Problem was successfully created.'
 				}
 	      		format.json  { render :json => @problem, :status => :created, :location => @problem }
+	      		format.js
 			else
 				format.html  {
 					render :action => "new"
@@ -33,6 +35,8 @@ class ProblemsController < ApplicationController
 
 	def show
 		@problem = @assignment.problems.find(params[:id])
+		@source_code = SourceCode.new
+		@user = current_user
 	end
 
 	def update

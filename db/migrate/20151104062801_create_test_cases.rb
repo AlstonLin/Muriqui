@@ -5,6 +5,7 @@ class CreateTestCases < ActiveRecord::Migration
     	t.string :input
      	t.string :output
     	t.boolean :legal
+    	t.references :creator
       t.timestamps null: false
     end
   end

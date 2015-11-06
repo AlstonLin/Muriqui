@@ -9,6 +9,7 @@ class TestCasesController < ApplicationController
 		@test_case = @problem.test_cases.build(test_case_params)
 		@test_case.problem = @problem
 		@test_case.legal = true
+		@test_case.creator = current_user
 		respond_to do |format|
 			if @test_case.save
 				format.html  { 

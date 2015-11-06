@@ -8,6 +8,7 @@ class AssignmentsController < ApplicationController
 	def create
 		@assignment = @course.assignments.build(assignment_params)
 		@assignment.course = @course
+		@assignment.creator = current_user
 		respond_to do |format|	
 			if @assignment.save
 				format.html  { 

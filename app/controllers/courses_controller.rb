@@ -1,11 +1,13 @@
 class CoursesController < ApplicationController
 
 	def index
-		@courses = Course.all
+		@courses = Course.all 
 	end
 
 	def create
 		@course = Course.new(course_params)
+		@creator = current_user
+		@course.creator = @creator 
 		respond_to do |format|
 			if @course.save
 				format.html  { 
