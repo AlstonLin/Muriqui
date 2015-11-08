@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 20151106001116) do
     t.string   "attachment"
     t.integer  "owner_id"
     t.integer  "problem_id"
+    t.integer  "tests_id"
+    t.integer  "passed"
+    t.integer  "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151106001116) do
 
   create_table "test_cases", force: :cascade do |t|
     t.integer  "problem_id"
+    t.integer  "tests_id"
     t.string   "input"
     t.string   "output"
     t.boolean  "legal"
@@ -59,15 +63,19 @@ ActiveRecord::Schema.define(version: 20151106001116) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.integer  "problem_id"
-    t.integer  "source_id"
+    t.integer  "test_case_id"
+    t.integer  "source_code_id"
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "input"
+    t.string   "outactual"
+    t.string   "outexpected"
+    t.boolean  "passed"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "tests", ["owner_id"], name: "index_tests_on_owner_id"
-  add_index "tests", ["source_id"], name: "index_tests_on_source_id"
+  add_index "tests", ["source_code_id"], name: "index_tests_on_source_code_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
@@ -75,9 +83,14 @@ ActiveRecord::Schema.define(version: 20151106001116) do
     t.string   "name"
     t.string   "image"
     t.string   "token"
+    t.integer  "tests_id"
+    t.integer  "courses_created_id"
+    t.integer  "assignments_created_id"
+    t.integer  "test_cases_created_id"
+    t.integer  "source_codes_id"
     t.datetime "expires_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

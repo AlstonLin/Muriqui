@@ -1,2 +1,10 @@
 <h1>Source Code</h1>
+<h2>Code</h2>
 <h3><%= @contents %></h3>
+<h2>Tests</h2>
+<% for test in @source_code.tests %>
+<h3>Test <%= test.id %> - <%= test.outexpected == test.outactual ? "Passed" : "Failed" %></h3>
+Input: <%= test.input %> <br>
+Expected Output: <%= test.outexpected %><br>
+Actual Output: <%= test.outactual %>
+<% end %>

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'remotipart'
 gem 'responders'
 gem 'carrierwave'
 gem 'omniauth-facebook'

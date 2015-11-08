@@ -16,7 +16,6 @@ class ProblemsController < ApplicationController
 					alert:'Problem was successfully created.'
 				}
 	      		format.json  { render :json => @problem, :status => :created, :location => @problem }
-	      		format.js
 			else
 				format.html  {
 					render :action => "new"
@@ -37,6 +36,9 @@ class ProblemsController < ApplicationController
 		@problem = @assignment.problems.find(params[:id])
 		@source_code = SourceCode.new
 		@user = current_user
+		flash[:success] = "The source code has been uploaded!"
+		flash[:failure] = "There was a problem uploading."
+		@sources = SourceCode.where(owner: @user, problem: @problem)
 	end
 
 	def update

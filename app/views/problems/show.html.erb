@@ -1,14 +1,11 @@
 <h1><%= @problem.name %></h1>
 <%= button_to "New Test Case", new_problem_test_case_path(@problem), :method => :get %>
 
+<%= render partial: "source_upload", locals: { source_code: @source_code, problem: @problem, user: @user } %>
 
-<%= form_for @source_code, :remote => true do |f| %>
-	<%= f.file_field :attachment %>
-	<%= f.label :name, "Name" %>
-	<%= f.text_field :name %>
-	<%= f.hidden_field :problem_id, :value => @problem.id %>
-	<%= f.hidden_field :owner_id, :value => @user.id %>
-	<%= f.submit "Upload" , :disable_with=>"Uploading..."%>
+<% for source in @sources %>
+	<%= link_to source.name + " - " + source.passed.to_s + "/" + source.total.to_s, source %>
+	<br>
 <% end %>
-
-<div id="upload_result"></div>	
+<div id="a"></div>	
+<div id="b"></div>	
