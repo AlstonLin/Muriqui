@@ -1,11 +1,6 @@
-<h1><%= @problem.name %></h1>
+
+<%= stylesheet_link_tag "rouge" %>
+<h1>Problem <%= @problem.number %> <% if @problem.part %> - <%= @problem.part %> <% end %></h1>
 <%= button_to "New Test Case", new_problem_test_case_path(@problem), :method => :get %>
-
-<%= render partial: "source_upload", locals: { source_code: @source_code, problem: @problem, user: @user } %>
-
-<% for source in @sources %>
-	<%= link_to source.name + " - " + source.passed.to_s + "/" + source.total.to_s, source %>
-	<br>
-<% end %>
-<div id="a"></div>	
-<div id="b"></div>	
+<h2>Test Source</h2>
+<%= markdown @problem.source %>

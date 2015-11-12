@@ -11,7 +11,7 @@ class TestCasesController < ApplicationController
 		@test_case.legal = true
 		@test_case.creator = current_user
 		respond_to do |format|
-			if @test_case.save
+			if @test_case.save && @problem.add_test_case(@test_case)
 				format.html  { 
 					redirect_to @test_case,	
 					alert:'Assignment was successfully created.'
@@ -35,6 +35,9 @@ class TestCasesController < ApplicationController
 
 	def show
 		@test_case = @problem.test_cases.find(params[:id])
+		@formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
+		@lexer = Rouge::Lexers::Shell.new
+		Rouge::Themes::Base16.mode(:light).render(scope: '.highlight')
 	end
 
 	def update
@@ -44,7 +47,7 @@ class TestCasesController < ApplicationController
 	end
 
 	def test_case_params
-      params.require(:test_case).permit(:input, :output)
+      params.require(:test_case).permit(:input, :oraoutput)
   	end
   	
   	def load_problem
@@ -54,4 +57,9 @@ class TestCasesController < ApplicationController
   			@problem = TestCase.find(params[:id]).problem
   		end
   	end
+
+  	def flag
+  		
+  	end
+
 end

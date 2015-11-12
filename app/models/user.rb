@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :tests
   has_many :courses_created, class_name: "Course"
   has_many :assignments_created, class_name: "Assignment"
   has_many :test_cases_created, class_name: "TestCase"
-  has_many :source_codes
   def self.omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider

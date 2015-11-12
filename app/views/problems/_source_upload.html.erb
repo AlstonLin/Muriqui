@@ -1,8 +1,0 @@
-<%= form_for source_code do |f| %>
-	<%= f.file_field :attachment %>
-	<%= f.label :name, "Name" %>
-	<%= f.text_field :name %>
-	<%= f.hidden_field :problem_id, :value => problem.id %>
-	<%= f.hidden_field :owner_id, :value => user.id %>
-	<%= f.submit "Upload"%>
-<% end %>

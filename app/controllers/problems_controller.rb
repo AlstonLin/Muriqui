@@ -9,6 +9,7 @@ class ProblemsController < ApplicationController
 		@problem = @assignment.problems.build(problem_params)
 		@problem.assignment = @assignment
 		@problem.creator = current_user
+	    @problem.source = generate_source
 		respond_to do |format|
 			if @problem.save
 				format.html  { 
@@ -34,11 +35,6 @@ class ProblemsController < ApplicationController
 
 	def show
 		@problem = @assignment.problems.find(params[:id])
-		@source_code = SourceCode.new
-		@user = current_user
-		flash[:success] = "The source code has been uploaded!"
-		flash[:failure] = "There was a problem uploading."
-		@sources = SourceCode.where(owner: @user, problem: @problem)
 	end
 
 	def update
@@ -48,7 +44,7 @@ class ProblemsController < ApplicationController
 	end
 
 	def problem_params
-      params.require(:problem).permit(:name)
+      params.require(:problem).permit(:number, :part, :file_name, :function_name)
   	end
 
   	def load_assignment
@@ -58,4 +54,36 @@ class ProblemsController < ApplicationController
   			@assignment = Problem.find(params[:id]).assignment
   		end
   	end
+
+  	def add_test_case (test_case)
+  		@problem = @assignment.problems.find(params[:id])
+  		@problem.test_cases << test_case
+  		#TODO: MODIFY SOURCE EVERY TIME TEST CASE ADDED
+  		if !@problem.save
+  			return false
+  		end
+  		return true
+  	end
+
+  	def generate_source
+  		#TODO: Finish this template
+  		return "#include <stdio.h>  
+#include #{@problem.file_name}
+void main(){
+  printf(\"Hello World\");
+}
+
+void #{@problem.function_name}{
+}
+"
+  	end
+
+  	def show_source
+  		respond_to do |format|
+    		format.html { render :text => @problem.source }
+    		format.json { render :json => @problem.source }
+  		end
+  	end
+
+  	helper_method :show_source
 end

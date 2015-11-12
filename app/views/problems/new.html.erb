@@ -2,8 +2,23 @@
 <%= form_for @problem, :url => { :action => 'create' } do |form| %>
 
   <p>
-    <%= form.label :name, "Name" %>
-    <%= form.text_field :name %>
+    <%= form.label :number, "Problem Number" %>
+    <%= form.number_field :number, min: 1 %>
+  </p>
+
+  <p>
+    <%= form.label :part, "Part (Optional)" %>
+    <%= form.number_field :part, min:1 %>
+  </p>
+
+  <p>
+    <%= form.label :file_name, "File Name" %>
+    <%= form.text_field :file_name %>
+  </p>
+
+  <p>
+    <%= form.label :function_name, "Function Name" %>
+    <%= form.text_field :function_name %>
   </p>
 
   <p class='buttons'>
