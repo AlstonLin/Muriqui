@@ -1,5 +1,14 @@
-<h1><%= @course.code + " - " + @course.name %></h1>
-<%= button_to "New Assignment", new_course_assignment_path(@course), :method => :get %>
-<% @course.assignments.each do |a| %>
-<h2><%= link_to a.name, assignment_path(@course, a) %></h2>
-<% end %>
+<div class="container">
+	<div class="page-header">
+		<h1><%= @course.code + " - " + @course.name %></h1>
+	</div>
+		
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<%= render :partial => "assignments/assignment_form", :locals => { course: @course, assignment: @assignment } %>
+		</div>
+		<div class="panel-body" id="assignments_panel">
+			<%= render :partial => "assignments/assignment_list", :locals => { courses: @courses } %>
+		</div>
+	</div>
+</div>

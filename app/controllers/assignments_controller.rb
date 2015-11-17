@@ -16,6 +16,7 @@ class AssignmentsController < ApplicationController
 					alert:'Assignment was successfully created.'
 				}
 	      		format.json  { render :json => @assignment, :status => :created, :location => @assignment }
+	      		format.js
 			else
 				format.html  {
 					render :action => "new"
@@ -34,6 +35,7 @@ class AssignmentsController < ApplicationController
 
 	def show
 		@assignment = @course.assignments.find(params[:id])
+		@problem = Problem.new
 	end
 
 	def update

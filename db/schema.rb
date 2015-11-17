@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20151105162051) do
 
   create_table "assignments", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "course_id"
-    t.datetime "due"
-    t.integer  "creator_id"
+    t.string  "name"
+    t.integer "course_id"
+    t.date    "due"
+    t.integer "creator_id"
   end
 
   create_table "courses", force: :cascade do |t|

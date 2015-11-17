@@ -2,12 +2,14 @@ class CoursesController < ApplicationController
 
 	def index
 		@courses = Course.all 
+		@course = Course.new
 	end
 
 	def create
 		@course = Course.new(course_params)
 		@creator = current_user
-		@course.creator = @creator 
+		@course.creator = @creator
+		@courses = Course.all 
 		respond_to do |format|
 			if @course.save
 				format.html  { 
@@ -15,6 +17,7 @@ class CoursesController < ApplicationController
 					alert:'Course was successfully created.'
 				}
 	      		format.json  { render :json => @course, :status => :created, :location => @course }
+	      		format.js
 			else
 				format.html  {
 					render :action => "new"
@@ -34,6 +37,7 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
+		@assignment = Assignment.new
 	end
 
 	def update

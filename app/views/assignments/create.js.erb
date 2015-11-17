@@ -1,0 +1,2 @@
+$("#assignments_panel").html('<%= escape_javascript( render :partial => "assignment_list", :locals => {course: @course} )%>');
+$("#assignment_name").val('');

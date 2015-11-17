@@ -17,6 +17,7 @@ class ProblemsController < ApplicationController
 					alert:'Problem was successfully created.'
 				}
 	      		format.json  { render :json => @problem, :status => :created, :location => @problem }
+	      		format.js
 			else
 				format.html  {
 					render :action => "new"
@@ -35,6 +36,7 @@ class ProblemsController < ApplicationController
 
 	def show
 		@problem = @assignment.problems.find(params[:id])
+		@test_case = TestCase.new
 	end
 
 	def update

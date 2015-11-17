@@ -3,7 +3,7 @@ class CreateAssignments < ActiveRecord::Migration
     create_table :assignments do |t|
     	t.string :name
     	t.belongs_to :course
-    	t.datetime :due
+    	t.date :due
     	t.references :creator
     end
   end
