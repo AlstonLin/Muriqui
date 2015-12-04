@@ -1,34 +1,10 @@
 <%= stylesheet_link_tag "rouge" %>
-<div class="container">
-	<div class="page-header">
-		<h1>Problem <%= @problem.number %> <% if @problem.part %>.<%= @problem.part %> <% end %></h1>
-	</div>
 
+<div class="page-header row">
+	<h1 class="pull-left">Problem <%= @problem.number %><% if @problem.part %>.<%= @problem.part %> <% end %></h1>
+	<%= button_to "Test Cases", problem_test_cases_path(@problem.id), :class => 'btn btn-lg btn-success pull-right', :method => :get %>
+</div>
 
-	<div class="panel panel-warning">
-		<div class="panel-heading">
-			<%= render :partial => "test_cases/test_case_form", :locals =>{ test_case: @test_case, problem: @problem } %>
-		</div>
-		<div class="panel-body">
-			<% @problem.test_cases.each do |t| %>
-				<div class="row">
-					<div class="col-md-6">
-						<h3>Input - <%= t.input %></h3>
-					</div>
-					</div class="col-md-6">
-						<h3>Output - <%= t.output %></h3>
-					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
-
-	<div class="panel panel-warning">
-		<div class="panel-heading text-center">
-			<h2>Test Source</h2>
-		</div>
-		<div class="panel-body">
-			<%= markdown @problem.source %>
-		</div>
-	</div>
+<div class="panel panel-warning" id="source">
+	<%= render :partial => "test_source", :locals => { problem: @problem } %>
 </div>

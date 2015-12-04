@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
 
 	def index
-		@courses = Course.all 
+		@courses = Course.all
 		@course = Course.new
 	end
 
@@ -9,20 +9,20 @@ class CoursesController < ApplicationController
 		@course = Course.new(course_params)
 		@creator = current_user
 		@course.creator = @creator
-		@courses = Course.all 
+		@courses = Course.all
 		respond_to do |format|
 			if @course.save
-				format.html  { 
-					redirect_to @course, 
+				format.html  {
+					redirect_to @course,
 					alert:'Course was successfully created.'
 				}
-	      		format.json  { render :json => @course, :status => :created, :location => @course }
-	      		format.js
+	      format.json  { render :json => @course, :status => :created, :location => @course }
+	      format.js
 			else
 				format.html  {
 					render :action => "new"
 				}
-	      		format.json  { render :json => @course.errors, :status => :unprocessable_entity }
+	      format.json  { render :json => @course.errors, :status => :unprocessable_entity }
 			end
 		end
 	end
@@ -46,7 +46,7 @@ class CoursesController < ApplicationController
 		if success
 		else
 		end
-	end 
+	end
 
 	def destroy
 		Course.find(params[:id]).destroy

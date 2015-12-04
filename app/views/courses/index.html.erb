@@ -1,17 +1,14 @@
-<div class="container">
-	<div class="page-header">
-		<div class="row">
-			<h1>Courses</h1>
-		</div> 	
+<div class="page-header">
+	<div class="row">
+		<h1>Courses</h1>
 	</div>
+</div>
 
-
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<%= render partial: "course_form", locals: { course: @course} %>	
-		</div>
-		<div class="panel-body" id="courses_panel">
-			<%= render partial: "course_list", locals: {courses: @courses} %>
-		</div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= render partial: "course_form", locals: { course: @course} %>
+	</div>
+	<div class="panel-body" id="courses_panel">
+		<%= render partial: "course_list", locals: { courses: @courses } %>
 	</div>
 </div>

@@ -24,4 +24,13 @@ $(document).ready(function(){
       mode: "text/x-csrc"
     });
   });
+
+  $("#codemirror-read").each(function() {
+    CodeMirror.fromTextArea($(this).get(0), {
+      lineNumbers: true,
+      mode: "text/x-csrc",
+      readOnly: true,
+      scrollbarStyle: "null"
+    });
+  });
 });

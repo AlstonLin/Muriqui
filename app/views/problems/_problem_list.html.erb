@@ -1,16 +1,10 @@
 <% assignment.problems.each do |p| %>
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-4 col-md-offset-2">
 			<h3>Problem <%= p.number.to_s %><% if p.part %>.<%= p.part.to_s %><% end %></h3>
 		</div>
-		<div class="col-md-3">
-			<h3><%= p.file_name %></h3>
-		</div>
-		<div class="col-md-3">
-			<h3><%= p.function_name %></h3>
-		</div>
-		<div class="col-md-2">
-			<%= button_to "View", problem_path(assignment, p), class:"btn btn-success pull-right btn-lg", :method => :get %>
+		<div class="col-md-4">
+			<%= button_to "View", problem_path(p), class:"btn btn-success pull-right btn-lg", :method => :get %>
 		</div>
 	</div>
 <% end %>

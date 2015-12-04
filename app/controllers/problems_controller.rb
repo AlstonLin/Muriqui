@@ -9,20 +9,19 @@ class ProblemsController < ApplicationController
 		@problem = @assignment.problems.build(problem_params)
 		@problem.assignment = @assignment
 		@problem.creator = current_user
-	    @problem.source = generate_source
+	  @problem.generated_source = @problem.generate_source()
 		respond_to do |format|
 			if @problem.save
 				format.html  {
 					redirect_to @problem,
 					alert:'Problem was successfully created.'
 				}
-	      		format.json  { render :json => @problem, :status => :created, :location => @problem }
-	      		format.js
+	      format.json  { render :json => @problem, :status => :created, :location => @problem }
 			else
 				format.html  {
 					render :action => "new"
 				}
-	      		format.json  { render :json => @problem.errors, :status => :unprocessable_entity }
+	      format.json  { render :json => @problem.errors, :status => :unprocessable_entity }
 			end
 		end
 	end
@@ -36,7 +35,6 @@ class ProblemsController < ApplicationController
 
 	def show
 		@problem = @assignment.problems.find(params[:id])
-		@test_case = TestCase.new
 	end
 
 	def update
@@ -46,7 +44,7 @@ class ProblemsController < ApplicationController
 	end
 
 	def problem_params
-      params.require(:problem).permit(:number, :part, :file_name, :function_name)
+      params.require(:problem).permit(:number, :part, :source)
   	end
 
   	def load_assignment
@@ -55,29 +53,6 @@ class ProblemsController < ApplicationController
   		else
   			@assignment = Problem.find(params[:id]).assignment
   		end
-  	end
-
-  	def add_test_case (test_case)
-  		@problem = @assignment.problems.find(params[:id])
-  		@problem.test_cases << test_case
-  		#TODO: MODIFY SOURCE EVERY TIME TEST CASE ADDED
-  		if !@problem.save
-  			return false
-  		end
-  		return true
-  	end
-
-  	def generate_source
-  		#TODO: Finish this template
-  		return "#include <stdio.h>
-#include #{@problem.file_name}
-void main(){
-  printf(\"Hello World\");
-}
-
-void #{@problem.function_name}{
-}
-"
   	end
 
   	def show_source

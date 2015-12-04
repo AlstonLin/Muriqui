@@ -14,3 +14,7 @@
  *= require_self
  *= require codemirror
  */
+
+ .CodeMirror {
+   height: auto !important;
+ }

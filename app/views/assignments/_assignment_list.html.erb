@@ -1,4 +1,4 @@
-<% @course.assignments.each do |a| %>
+<% course.assignments.each do |a| %>
 	<div class="row">
 		<div class="col-md-4">
 			<h3><%= a.name %></h3>
@@ -7,7 +7,7 @@
 			<h3><%= a.due %></h3>
 		</div>
 		<div class="col-md-4">
-			<%= button_to "View", assignment_path(@course, a), class:"btn btn-success pull-right btn-lg", :method => :get %>
+			<%= button_to "View", assignment_path(a), class:"btn btn-success pull-right btn-lg", :method => :get %>
 		</div>
 	</div>
 <% end %>

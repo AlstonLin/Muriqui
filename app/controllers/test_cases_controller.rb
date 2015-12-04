@@ -2,32 +2,36 @@ class TestCasesController < ApplicationController
 	before_filter :load_problem
 
 	def index
-		@test_case = @problem.find(params[:id])
+		@problem = Problem.find(params[:problem_id])
+		@test_case = TestCase.new
+		puts "MARK"
 	end
 
 	def create
-		@test_case = @problem.test_cases.build(test_case_params)
+		@test_case = TestCase.new(test_case_params)
 		@test_case.problem = @problem
 		@test_case.legal = true
 		@test_case.creator = current_user
 		respond_to do |format|
-			if @test_case.save && @problem.add_test_case(@test_case)
-				format.html  { 
-					redirect_to @test_case,	
+			if @test_case.save
+				format.html  {
+					redirect_to @test_case,
 					alert:'Assignment was successfully created.'
 				}
-	      		format.json  { render :json => @test_case, :status => :created, :location => @test_case }
+	      format.json  { render :json => @test_case, :status => :created, :location => @test_case }
+				format.js
 			else
 				format.html  {
-					render :action => "new"
+					render :text => "ERROR".html_safe
 				}
-	      		format.json  { render :json => @test_case.errors, :status => :unprocessable_entity }
+	      format.json  { render :json => @test_case.errors, :status => :unprocessable_entity }
 			end
 		end
 	end
 
 	def new
-		@test_case = @problem.test_cases.build
+		@test_case =  TestCase.negith
+		
 	end
 
 	def edit
@@ -41,25 +45,23 @@ class TestCasesController < ApplicationController
 	end
 
 	def update
-	end 
+	end
 
 	def destroy
 	end
 
 	def test_case_params
-      params.require(:test_case).permit(:input, :oraoutput)
-  	end
-  	
-  	def load_problem
-  		if (params[:problem_id])
-  			@problem = Problem.find(params[:problem_id])
-  		else
-  			@problem = TestCase.find(params[:id]).problem
-  		end
-  	end
+      params.require(:test_case).permit(:input, :output)
+	end
 
-  	def flag
-  		
-  	end
+	def load_problem
+		if (params[:problem_id])
+			@problem = Problem.find(params[:problem_id])
+		else
+			@problem = TestCase.find(params[:id]).problem
+		end
+	end
+
+
 
 end
