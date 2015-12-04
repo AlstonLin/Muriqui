@@ -2,10 +2,10 @@
 	<div class="page-header">
 		<h1><%= @assignment.name %></h1>
 	</div>
-	
+
 	<div class="panel panel-success">
 		<div class="panel-heading">
-			<%= render :partial => "problems/problem_form", :locals => { assignment: @assignment,  problem: @problem } %>
+			<%= button_to "New Problem", new_assignment_problem_path(@assignment), :class=>"btn btn-lg btn-info", :method => "get" %>
 		</div>
 		<div class="panel-body" id="problems_panel">
 			<%= render :partial => "problems/problem_list", :locals => { assignment: @assignment } %>

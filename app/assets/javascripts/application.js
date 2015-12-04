@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require codemirror
+//= require codemirror/modes/clike
+
+$(document).ready(function(){
+  $("#codemirror").each(function() {
+    CodeMirror.fromTextArea($(this).get(0), {
+      lineNumbers: true,
+      mode: "text/x-csrc"
+    });
+  });
+});

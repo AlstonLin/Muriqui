@@ -12,8 +12,8 @@ class ProblemsController < ApplicationController
 	    @problem.source = generate_source
 		respond_to do |format|
 			if @problem.save
-				format.html  { 
-					redirect_to @problem,	
+				format.html  {
+					redirect_to @problem,
 					alert:'Problem was successfully created.'
 				}
 	      		format.json  { render :json => @problem, :status => :created, :location => @problem }
@@ -40,7 +40,7 @@ class ProblemsController < ApplicationController
 	end
 
 	def update
-	end 
+	end
 
 	def destroy
 	end
@@ -69,7 +69,7 @@ class ProblemsController < ApplicationController
 
   	def generate_source
   		#TODO: Finish this template
-  		return "#include <stdio.h>  
+  		return "#include <stdio.h>
 #include #{@problem.file_name}
 void main(){
   printf(\"Hello World\");
