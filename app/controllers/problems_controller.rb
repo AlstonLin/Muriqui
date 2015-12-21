@@ -27,6 +27,7 @@ class ProblemsController < ApplicationController
 	end
 
 	def new
+		@course = @assignment.course
 		@problem = @assignment.problems.build
 	end
 
@@ -34,6 +35,7 @@ class ProblemsController < ApplicationController
 	end
 
 	def show
+		@course = @assignment.course
 		@problem = @assignment.problems.find(params[:id])
 	end
 

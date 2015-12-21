@@ -17,7 +17,7 @@
 //= require codemirror
 //= require codemirror/modes/clike
 
-$(document).ready(function(){
+var ready = function(){
   $("#codemirror").each(function() {
     CodeMirror.fromTextArea($(this).get(0), {
       lineNumbers: true,
@@ -33,4 +33,7 @@ $(document).ready(function(){
       scrollbarStyle: "null"
     });
   });
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

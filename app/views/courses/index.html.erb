@@ -6,7 +6,9 @@
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<%= render partial: "course_form", locals: { course: @course} %>
+		<% if current_user.admin %>
+			<%= render partial: "course_form", locals: { course: @course} %>
+		<% end %>
 	</div>
 	<div class="panel-body" id="courses_panel">
 		<%= render partial: "course_list", locals: { courses: @courses } %>

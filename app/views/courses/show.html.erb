@@ -1,10 +1,16 @@
+<% content_for :navbar do %>
+	<li> <%= link_to  @course.code, @course %> </li>
+<% end %>
+
 <div class="page-header">
 	<h1><%= @course.code + " - " + @course.name %></h1>
 </div>
 
 <div class="panel panel-info">
 	<div class="panel-heading">
-		<%= render :partial => "assignments/assignment_form", :locals => { course: @course, assignment: @assignment } %>
+		<% if current_user.admin %>
+			<%= render :partial => "assignments/assignment_form", :locals => { course: @course, assignment: @assignment } %>
+		<% end %>
 	</div>
 	<div class="panel-body" id="assignments_panel">
 		<%= render :partial => "assignments/assignment_list", :locals => { course: @course } %>

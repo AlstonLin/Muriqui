@@ -1,7 +1,13 @@
-<%= stylesheet_link_tag "rouge" %>
+<% content_for :navbar do %>
+	<li> <%= link_to @course.code, @course %> </li>
+	<li> <a> > </a> </li>
+	<li> <%= link_to @assignment.name, @assignment %> </li>
+	<li> <a> > </a> </li>
+	<li> <%= link_to get_name, @problem %> </li>
+<% end %>
 
 <div class="page-header row">
-	<h1 class="pull-left">Problem <%= @problem.number %><% if @problem.part %>.<%= @problem.part %> <% end %></h1>
+	<h1 class="pull-left"> <%= get_name %> </h1>
 	<%= button_to "Test Cases", problem_test_cases_path(@problem.id), :class => 'btn btn-lg btn-success pull-right', :method => :get %>
 </div>
 

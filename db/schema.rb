@@ -32,12 +32,11 @@ ActiveRecord::Schema.define(version: 20151105162051) do
     t.integer  "assignment_id"
     t.integer  "number"
     t.integer  "part"
-    t.string   "file_name"
-    t.string   "function_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "creator_id"
     t.text     "source"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "creator_id"
+    t.text     "generated_source"
   end
 
   create_table "test_cases", force: :cascade do |t|
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 20151105162051) do
     t.string   "name"
     t.string   "image"
     t.string   "token"
+    t.boolean  "admin"
     t.integer  "courses_created_id"
     t.integer  "assignments_created_id"
     t.integer  "test_cases_created_id"

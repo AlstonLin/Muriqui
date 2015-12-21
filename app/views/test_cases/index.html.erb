@@ -1,3 +1,12 @@
+<% content_for :navbar do %>
+	<li> <%= link_to @course.code, @course %> </li>
+	<li> <a> > </a> </li>
+	<li> <%= link_to @assignment.name, @assignment %> </li>
+	<li> <a> > </a> </li>
+	<li> <%= link_to get_name, @problem %> </li>
+	<li> <a> > </a> </li>
+	<li><a>Test Cases</a></li>
+<% end %>
 <div class="panel panel-warning">
 	<div class="panel-heading" id="test_form">
 		<%= render :partial => "test_cases/test_case_form", :locals => { test_case: @test_case, problem: @problem } %>

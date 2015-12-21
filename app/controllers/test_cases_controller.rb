@@ -3,8 +3,9 @@ class TestCasesController < ApplicationController
 
 	def index
 		@problem = Problem.find(params[:problem_id])
+		@assignment = @problem.assignment
+		@course = @assignment.course
 		@test_case = TestCase.new
-		puts "MARK"
 	end
 
 	def create
@@ -31,7 +32,7 @@ class TestCasesController < ApplicationController
 
 	def new
 		@test_case =  TestCase.negith
-		
+
 	end
 
 	def edit
