@@ -6,10 +6,12 @@ class ProblemsController < ApplicationController
 	end
 
 	def create
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
 		@problem = @assignment.problems.build(problem_params)
 		@problem.assignment = @assignment
 		@problem.creator = current_user
-	  @problem.generated_source = @problem.generate_source()
+	  @problem.generated_source = @problem.generate_source
+
 		respond_to do |format|
 			if @problem.save
 				format.html  {
@@ -32,17 +34,17 @@ class ProblemsController < ApplicationController
 	end
 
 	def edit
+		#TODO: Complete this
+	end
+
+	def update
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
+		#TODO: Make entries editable
 	end
 
 	def show
 		@course = @assignment.course
 		@problem = @assignment.problems.find(params[:id])
-	end
-
-	def update
-	end
-
-	def destroy
 	end
 
 	def problem_params

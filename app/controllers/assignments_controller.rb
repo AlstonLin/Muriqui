@@ -6,13 +6,14 @@ class AssignmentsController < ApplicationController
 	end
 
 	def create
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
 		@assignment = @course.assignments.build(assignment_params)
 		@assignment.course = @course
 		@assignment.creator = current_user
-		respond_to do |format|	
+		respond_to do |format|
 			if @assignment.save
-				format.html  { 
-					redirect_to @assignment,	
+				format.html  {
+					redirect_to @assignment,
 					alert:'Assignment was successfully created.'
 				}
 	      		format.json  { render :json => @assignment, :status => :created, :location => @assignment }
@@ -24,13 +25,11 @@ class AssignmentsController < ApplicationController
 	      		format.json  { render :json => @assignment.errors, :status => :unprocessable_entity }
 			end
 		end
-	end	
-
-	def new
-		@assignment = @course.assignments.new
 	end
 
-	def edit
+	def update
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
+		#TODO: Make entries editable
 	end
 
 	def show
@@ -38,21 +37,15 @@ class AssignmentsController < ApplicationController
 		@problem = Problem.new
 	end
 
-	def update
-	end 
-
-	def destroy
+	def assignment_params
+    params.require(:assignment).permit(:name, :due)
 	end
 
-	def assignment_params
-      	params.require(:assignment).permit(:name, :due)
-  	end
-
-  	def load_course
-  		if (params[:course_id])
-  			@course = Course.find(params[:course_id])
-  		else
-  			@course = Assignment.find(params[:id]).course
-  		end
-  	end
+	def load_course
+		if (params[:course_id])
+			@course = Course.find(params[:course_id])
+		else
+			@course = Assignment.find(params[:id]).course
+		end
+	end
 end

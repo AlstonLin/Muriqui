@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :courses do
     resources :assignments, shallow: true do
       resources :problems, shallow: true do
-        resources :test_cases, shallow: true
+        resources :test_cases, shallow: true do
+          get 'toggle_flag'
+          get 'toggle_remove'
+        end
       end
     end
   end

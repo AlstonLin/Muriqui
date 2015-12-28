@@ -11,42 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105162051) do
+ActiveRecord::Schema.define(version: 20151227191716) do
 
   create_table "assignments", force: :cascade do |t|
-    t.string  "name"
-    t.integer "course_id"
-    t.date    "due"
-    t.integer "creator_id"
+    t.string   "name"
+    t.boolean  "removed",    default: false
+    t.date     "due"
+    t.integer  "creator_id"
+    t.integer  "remover_id"
+    t.integer  "course_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "courses", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
+    t.boolean  "removed",    default: false
     t.integer  "creator_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "remover_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "problems", force: :cascade do |t|
-    t.integer  "assignment_id"
     t.integer  "number"
     t.integer  "part"
+    t.boolean  "removed",          default: false
     t.text     "source"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "creator_id"
     t.text     "generated_source"
+    t.integer  "creator_id"
+    t.integer  "remover_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "test_cases", force: :cascade do |t|
-    t.integer  "problem_id"
     t.string   "input"
     t.string   "output"
-    t.boolean  "legal"
+    t.boolean  "removed",    default: false
     t.integer  "creator_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "remover_id"
+    t.integer  "problem_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "test_cases_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "test_case_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,12 +70,9 @@ ActiveRecord::Schema.define(version: 20151105162051) do
     t.string   "image"
     t.string   "token"
     t.boolean  "admin"
-    t.integer  "courses_created_id"
-    t.integer  "assignments_created_id"
-    t.integer  "test_cases_created_id"
     t.datetime "expires_at"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -1,10 +1,28 @@
 <% problem.test_cases.each do |t| %>
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Input - <%= t.input %></h3>
+  <% if !t.removed %>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Input - <%= t.input %></h3>
+      </div>
+      <div class="col-md-4">
+        <h3>Output - <%= t.output %></h3>
+      </div>
+      <!--- The user is an ADMIN -->
+      <% if current_user &&  current_user.admin %>
+          <div class="col-md-2">
+            <h3><%= link_to '⚑' + t.flaggers.count.to_s, test_case_toggle_flag_path(t), remote: true,
+              :style => t.flaggers.include?(current_user) ? 'color: red;' : 'color: black;' %></h3>
+          </div>
+          <div class="col-md-2">
+            <h3><%= link_to '✖', test_case_toggle_remove_path(t), remote: true %></h3>
+          </div>
+      <!-- REGULAR user -->
+      <% else %>
+        <div class="col-md-4">
+          <h3><%= link_to '⚑' + t.flaggers.count.to_s, test_case_toggle_flag_path(t), remote: true,
+            :style => t.flaggers.include?(current_user) ? 'color: red;' : 'color: black;' %></h3>
+        </div>
+      <% end %>
     </div>
-    <div class="col-md-6">
-      <h3>Output - <%= t.output %></h3>
-    </div>
-  </div>
+  <% end %>
 <% end %>

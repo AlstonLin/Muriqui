@@ -9,10 +9,10 @@
 <% end %>
 <div class="panel panel-warning">
 	<div class="panel-heading" id="test_form">
-		<%= render :partial => "test_cases/test_case_form", :locals => { test_case: @test_case, problem: @problem } %>
+		<%= render partial: "test_cases/test_case_form", :locals => { test_case: @test_case, problem: @problem } %>
 	</div>
 
 	<div class="panel-body" id="test_list">
-		<%= render :partial =>"test_cases/test_case_list", :locals => { problem: @problem } %>
+		<%= render partial: "test_cases/test_case_list", :locals => { problem: @problem } %>
 	</div>
 </div>

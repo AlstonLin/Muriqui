@@ -8,8 +8,8 @@
 
 <div class="panel panel-info">
 	<div class="panel-heading">
-		<% if current_user.admin %>
-			<%= render :partial => "assignments/assignment_form", :locals => { course: @course, assignment: @assignment } %>
+		<% if  current_user && current_user.admin %>
+			<%= render partial: "assignments/assignment_form", :locals => { course: @course, assignment: @assignment } %>
 		<% end %>
 	</div>
 	<div class="panel-body" id="assignments_panel">

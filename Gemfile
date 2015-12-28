@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "twitter-bootstrap-rails"
 gem 'codemirror-rails'
 gem 'omniauth-facebook'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

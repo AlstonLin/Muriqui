@@ -1,9 +1,11 @@
 class Problem < ActiveRecord::Base
-
 	self.primary_key = 'id'
+
 	has_many :test_cases
-	belongs_to :creator, :class_name => 'User'
 	belongs_to :assignment
+	belongs_to :creator, :class_name => 'User', :foreign_key => 'creator_id'
+	belongs_to :remover, :class_name => 'User', :foreign_key => 'remover_id'
+
 	validates :number, presence: true
 	validates :creator, presence: true
 	validates :source, presence: true

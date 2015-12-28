@@ -3,9 +3,7 @@
 <head>
   <title>Muriqui</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag "bootstrap" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'bootstrap' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -29,7 +27,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <%= button_to "Logout", "/logout", :class => 'btn pull-right btn-default navbar-btn', :method => :get%>
+              <%= button_to "Logout", "/logout", class: 'btn pull-right btn-default navbar-btn', :method => :get%>
             </li>
           </ul>
         <% end %>

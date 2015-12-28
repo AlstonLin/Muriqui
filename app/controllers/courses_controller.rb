@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
 	end
 
 	def create
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
 		@course = Course.new(course_params)
 		@creator = current_user
 		@course.creator = @creator
@@ -22,17 +23,14 @@ class CoursesController < ApplicationController
 				format.html  {
 					render :action => "new"
 				}
-	      format.json  { render :json => @course.errors, :status => :unprocessable_entity }
+		    format.json  { render :json => @course.errors, :status => :unprocessable_entity }
 			end
 		end
 	end
 
-	def new
-		@course = Course.new
-	end
-
-	def edit
-		@course = Course.find(params[:id])
+	def update
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
+		#TODO: Make entries editable
 	end
 
 	def show
@@ -40,20 +38,7 @@ class CoursesController < ApplicationController
 		@assignment = Assignment.new
 	end
 
-	def update
-		@course = Course.find(params[:id])
-		success = @course.update_attributes(params[:code], params[:name]);
-		if success
-		else
-		end
-	end
-
-	def destroy
-		Course.find(params[:id]).destroy
-		redirect_to :action => 'index'
-	end
-
 	def course_params
-      params.require(:course).permit(:code, :name)
-   	end
+    params.require(:course).permit(:code, :name)
+ 	end
 end
