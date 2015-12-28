@@ -1,28 +1,27 @@
-== README
+== Muriqui
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web app created with Ruby on Rails to enable students to more effectively unit test their assignments 
+by sharing thier unit tests, while having their testing source code automatically generated.
 
-Things you may want to cover:
+<b>To Run</b>
 
-* Ruby version
+* Ruby on Rails and all the prerequisites for it must be installed
 
-* System dependencies
+* Install all the Gems: <tt>bundle install</tt>
 
-* Configuration
+* Set up the database: <tt>rake db:migrate</tt>
 
-* Database creation
+* Start the server: <tt>rails s</tt>
 
-* Database initialization
+* Optional: To make yourself admin, put the following lines in the Rails Console (<tt>rails c</tt>)
 
-* How to run the test suite
+  * <tt>user = User.find(1)</tt>
+  
+  * <tt>user.admin = true</tt>
+  
+  * <tt>user.save</tt>
+  
+  * <tt>exit</tt>
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Created by Alston Lin
