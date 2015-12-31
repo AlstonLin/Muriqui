@@ -27,8 +27,7 @@ void main(){
     super(attr_with_defaults)
   end
 
-	def generate_source()
-		logger.info "GENERATE"
+	def generate_source
 		test_cases = self.test_cases
 		source = self.source
 		generated_source = source.dup
@@ -58,16 +57,17 @@ void main(){
 		generated_source = before
 		counter = 0
 		self.test_cases.each do |test|
-			test_string = test_loop.dup
-			test_string.gsub! '{{index}}', counter.to_s
-			test_string.gsub! '{{input}}', test.input
-			test_string.gsub! '{{output}}', test.output
-			generated_source += test_string
-			counter += 1
+			if !test.removed
+				test_string = test_loop.dup
+				test_string.gsub! '{{index}}', counter.to_s
+				test_string.gsub! '{{input}}', test.input
+				test_string.gsub! '{{output}}', test.output
+				generated_source += test_string
+				counter += 1
+			end
 		end
 
 		generated_source += after
-
 		return generated_source
 	end
 

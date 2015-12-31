@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
   resources :courses do
+    get 'remove'
     resources :assignments, shallow: true do
+      get 'remove'
       resources :problems, shallow: true do
+        get 'remove'
         resources :test_cases, shallow: true do
           get 'toggle_flag'
-          get 'toggle_remove'
+          get 'remove'
         end
       end
     end

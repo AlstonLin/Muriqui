@@ -1,5 +1,4 @@
 class TestCasesController < ApplicationController
-	before_filter :load_problem
 
 	def index
 		@problem = Problem.find(params[:problem_id])
@@ -10,24 +9,10 @@ class TestCasesController < ApplicationController
 
 	def create
 		@test_case = TestCase.new(test_case_params)
+		@problem = Problem.find(params[:problem_id])
 		@test_case.problem = @problem
 		@test_case.creator = current_user
-
-		respond_to do |format|
-			if @test_case.save
-				format.html  {
-					redirect_to @test_case,
-					alert:'Test Case was successfully created.'
-				}
-	      format.json  { render :json => @test_case, :status => :created, :location => @test_case }
-				format.js
-			else
-				format.html  {
-					render :text => "ERROR".html_safe
-				}
-	      format.json  { render :json => @test_case.errors, :status => :unprocessable_entity }
-			end
-		end
+		save_created_object @test_case
 	end
 
 	def update
@@ -41,58 +26,38 @@ class TestCasesController < ApplicationController
       params.require(:test_case).permit(:input, :output)
 	end
 
-	def load_problem
-		if (params[:problem_id])
-			@problem = Problem.find(params[:problem_id])
-		else
-			@problem = TestCase.find(params[:test_case_id]).problem
-		end
-	end
-
 	def toggle_flag
 		raise "Must be logged in to flag a test case!" unless current_user
 		test_case = TestCase.find(params[:test_case_id])
+		@problem = test_case.problem
 
 		if test_case.flaggers.include?(current_user)
 			test_case.flaggers.delete(current_user)
 		else
 			test_case.flaggers << current_user
 		end
-		respond_to do |format|
-			if test_case.save
-				format.html  {
-					render :text => 'This page should not be shown.'.html_safe
-				}
-				format.json
-				format.js
-			else
-				format.html  {
-					render :text => "There was an error while creating the Test Case".html_safe
-				}
-				format.json
-			end
-		end
+
+		save_object test_case
 	end
 
 	helper_method :toggle_flag
 
-	def toggle_remove
-		raise "Must be logged in to flag a test case!" unless current_user
+	def remove
 		test_case = TestCase.find(params[:test_case_id])
+		raise "Unauthorized Access!" unless test_case.creator == current_user || current_user.admin
+		@problem = test_case.problem
 
-		if test_case.removed
-			test_case.remover = nil
-			test_case.removed = false
-		else
-			test_case.remover = current_user
-			test_case.removed = true
-		end
+		test_case.remover = current_user
+		test_case.removed = true
+
 		respond_to do |format|
 			if test_case.save
+				@problem.generated_source = @problem.generate_source
+				@problem.save
 				format.html  {
 					render :text => 'This page should not be shown.'.html_safe
 				}
-				format.json  { render :json => test_case, :status => :created, :location => test_case }
+				format.json  { render :json => test_case, :status => :success, :location => test_case }
 				format.js
 			else
 				format.html  {
@@ -102,6 +67,6 @@ class TestCasesController < ApplicationController
 			end
 		end
 	end
-	helper_method :toggle_remove
+	helper_method :remove
 
 end

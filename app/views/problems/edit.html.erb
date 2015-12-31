@@ -1,0 +1,42 @@
+
+<% content_for :navbar do %>
+	<li> <%= link_to @course.code, @course %> </li>
+	<li> <a> > </a> </li>
+	<li> <%= link_to @assignment.name, @assignment %> </li>
+	<li> <a> > </a> </li>
+  <li> <%= link_to get_name, @problem %> </li>
+  <li> <a> > </a> </li>
+	<li> <a>Edit</a> </li>
+<% end %>
+
+<div class="page-header">
+	<h2>Edit Problem</h2>
+</div>
+
+<% if  current_user && current_user.admin %>
+	<div class="panel panel-success">
+		<div class="panel-body" id="problems_panel">
+	    <%= form_for @problem do |form| %>
+	    <div class="row">
+	      <div class="form-group col-md-4 col-md-offset-2">
+	        <%= form.number_field :number, class: "form-control input-lg", placeholder: "Problem Num." %>
+	      </div>
+	      <div class="form-group col-md-4">
+	        <%= form.number_field :part, class: "form-control input-lg", placeholder: "Part (Optional)" %>
+	      </div>
+	    </div>
+
+	    <div class="col-md-10 col-md-offset-1">
+				<h3> <%= form.label :source,  "Unit Testing Source Template" %> </h3>
+				<h4>The format must remain the same as the default to automatically generate the unit test source code</h4>
+	      <%= form.text_area :source, class:"form control", id: "codemirror", placeholder:"Source Here", style:"width:100%; height:250px;" %>
+	    </div>
+	    <div class="form-group text-center">
+	      <%= form.submit "Save Changes", class: "btn btn-info btn-lg" %>
+	    </div>
+	    <% end %>
+		</div>
+	</div>
+<% else %>
+You're Not Authorized! Nice Try.
+<% end %>

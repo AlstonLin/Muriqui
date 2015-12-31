@@ -1,13 +1,18 @@
 <% courses.each do |c| %>
-	<div class="row">
-		<div class="col-md-4">
-			<h2><%= c.code %></h2>
+	<% if !c.removed %>
+		<div class="row">
+			<div class="col-md-4">
+				<h2><%= c.code %></h2>
+			</div>
+			<div class="col-md-4">
+				<h2><%= c.name %></h2>
+			</div>
+			<div class="col-md-3 col-md-offset-1">
+				<% if current_user.admin %>
+				<%= button_to "Delete", course_remove_path(c), class: "btn btn-danger pull-left btn-lg", :method => :get, remote: true %>
+				<% end %>
+				<%= button_to "Enter", course_path(c), class: "btn btn-success pull-right btn-lg", :method => :get %>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<h2><%= c.name %></h2>
-		</div>
-		<div class="col-md-4">
-			<%= button_to "Enter Course", course_path(c), class: "btn btn-success pull-right btn-lg", :method => :get %>
-		</div>
-	</div>
+	<% end %>
 <% end %>
