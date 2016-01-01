@@ -1,6 +1,7 @@
 class TestCasesController < ApplicationController
-
+		#-----------------------DEFAULT RESTFUL ACTIONS-------------------------------
 	def index
+		raise "You must be logged in to access this." unless current_user
 		@problem = Problem.find(params[:problem_id])
 		@assignment = @problem.assignment
 		@course = @assignment.course
@@ -8,24 +9,14 @@ class TestCasesController < ApplicationController
 	end
 
 	def create
+		raise "You must be logged in to access this." unless current_user
 		@test_case = TestCase.new(test_case_params)
 		@problem = Problem.find(params[:problem_id])
 		@test_case.problem = @problem
 		@test_case.creator = current_user
 		save_created_object @test_case
 	end
-
-	def update
-		test_case = TestCase.find(params[:test_case_id])
-		raise "Unauthorized Access! You must be an admin to do this." unless
-			current_user.admin || current_user == test_case.creator
-		#TODO: Make entries editable
-	end
-
-	def test_case_params
-      params.require(:test_case).permit(:input, :output)
-	end
-
+	#---------------------OTHER RESTFUL ACTIONS-----------------------------------
 	def toggle_flag
 		raise "Must be logged in to flag a test case!" unless current_user
 		test_case = TestCase.find(params[:test_case_id])
@@ -39,8 +30,6 @@ class TestCasesController < ApplicationController
 
 		save_object test_case
 	end
-
-	helper_method :toggle_flag
 
 	def remove
 		test_case = TestCase.find(params[:test_case_id])
@@ -67,6 +56,8 @@ class TestCasesController < ApplicationController
 			end
 		end
 	end
-	helper_method :remove
-
+	#---------------------EXTERNALIZED FUNCTIONS----------------------------------
+	def test_case_params
+			params.require(:test_case).permit(:input, :output)
+	end
 end

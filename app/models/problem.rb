@@ -1,15 +1,16 @@
 class Problem < ActiveRecord::Base
 	self.primary_key = 'id'
-
+	#Relationships
 	has_many :test_cases
 	belongs_to :assignment
 	belongs_to :creator, :class_name => 'User', :foreign_key => 'creator_id'
 	belongs_to :remover, :class_name => 'User', :foreign_key => 'remover_id'
-
+	#Validation
 	validates :number, presence: true
 	validates :creator, presence: true
 	validates :source, presence: true
 
+	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
 		template = '#include <stdio.h>
 #include <assert.h>
@@ -33,10 +34,8 @@ void main(){
 		generated_source = source.dup
 		#Splits the strings from regexes
 		error_prefix = "ERROR PARSING SOURCE:"
-
 		#{{count}}
 		generated_source.gsub! '{{count}}', self.test_cases.count.to_s
-
 		#{{each}}
 		split = generated_source.split(/{{each}}/)
 		if split.count != 2
@@ -44,7 +43,6 @@ void main(){
 		end
 		before = split[0]
 		after = split[1]
-
 		#{{end}}
 		split = after.split(/{{end}}/)
 		if split.count != 2
@@ -52,7 +50,6 @@ void main(){
 		end
 		test_loop = split[0]
 		after = split[1]
-
 		#Starts building the code
 		generated_source = before
 		counter = 0
@@ -66,7 +63,6 @@ void main(){
 				counter += 1
 			end
 		end
-
 		generated_source += after
 		return generated_source
 	end

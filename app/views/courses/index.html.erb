@@ -4,13 +4,16 @@
 	</div>
 </div>
 
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<% if current_user && current_user.admin %>
-			<%= render partial: "course_form", :locals => { course: @course} %>
-		<% end %>
+<% if current_user %>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<% if current_user.admin %>
+				<%= render partial: "course_form", :locals => { course: @course} %>
+			<% end %>
+		</div>
+
+		<div class="panel-body" id="courses_panel">
+			<%= render partial: "course_list", :locals => { courses: @courses } %>
+		</div>
 	</div>
-	<div class="panel-body" id="courses_panel">
-		<%= render partial: "course_list", :locals => { courses: @courses } %>
-	</div>
-</div>
+<% end %>

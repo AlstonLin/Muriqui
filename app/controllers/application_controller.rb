@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
+	#----------------GLOBAL HELPER METHODS----------------------------------------
 	def current_user
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
 
+	#----------------COMMONLY USED ACTIONS FOR CONTROLLERS------------------------
 	def remove_object(object)
 		object.removed = true
 		object.remover = current_user
@@ -56,7 +58,7 @@ class ApplicationController < ActionController::Base
 		respond_to do |format|
 			if object.save
 				format.html  {
-					render :text => 'This page should not be shown.'.html_safe
+					redirect_to object
 				}
 				format.json
 				format.js

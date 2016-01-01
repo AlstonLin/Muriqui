@@ -14,6 +14,7 @@
 			<%= button_to "New Problem", new_assignment_problem_path(@assignment), class: "btn btn-lg btn-info", :method => :get %>
 		<% end %>
 	</div>
+	
 	<div class="panel-body" id="problems_panel">
 		<%= render partial: "problems/problem_list", :locals => { assignment: @assignment } %>
 	</div>

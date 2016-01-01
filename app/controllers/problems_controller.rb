@@ -1,6 +1,7 @@
 class ProblemsController < ApplicationController
-
+	#-----------------------DEFAULT RESTFUL ACTIONS-------------------------------
 	def index
+		raise "You must be logged in to access this." unless current_user
 		@problem = Problem.find(params[:id])
 	end
 
@@ -15,12 +16,14 @@ class ProblemsController < ApplicationController
 	end
 
 	def new
+		raise "You must be logged in to access this." unless current_user
 		@assignment = Assignment.find(params[:assignment_id])
 		@course = @assignment.course
 		@problem = @assignment.problems.build
 	end
 
 	def edit
+		raise "You must be logged in to access this." unless current_user
 		@problem = Problem.find(params[:id])
 		@assignment = @problem.assignment
 		@course = @assignment.course
@@ -45,21 +48,20 @@ class ProblemsController < ApplicationController
 	end
 
 	def show
+		raise "You must be logged in to access this." unless current_user
 		@problem = Problem.find(params[:id])
 		@assignment = @problem.assignment
 		@course = @assignment.course
 	end
-
+	#---------------------OTHER RESTFUL ACTIONS-----------------------------------
+	def remove
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
+		@problem = Problem.find(params[:problem_id])
+		@assignment = @problem.assignment
+		remove_object @problem
+	end
+	#---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def problem_params
       params.require(:problem).permit(:number, :part, :source)
   end
-
-	def show_source
-		respond_to do |format|
-  		format.html { render :text => @problem.source }
-  		format.json { render :json => @problem.source }
-		end
-	end
-
-  	helper_method :show_source
 end

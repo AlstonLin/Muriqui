@@ -12,6 +12,7 @@
 			<%= render partial: "assignments/assignment_form", :locals => { course: @course, assignment: @assignment } %>
 		<% end %>
 	</div>
+	
 	<div class="panel-body" id="assignments_panel">
 		<%= render :partial => "assignments/assignment_list", :locals => { course: @course } %>
 	</div>

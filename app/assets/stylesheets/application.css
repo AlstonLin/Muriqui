@@ -22,3 +22,7 @@ span.glyphicon-large {
   font-size: 2em;
   margin-top: 15px;
 }
+
+.panel-btn {
+  margin-left: 10px;
+}

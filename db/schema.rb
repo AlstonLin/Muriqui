@@ -64,12 +64,12 @@ ActiveRecord::Schema.define(version: 20151227191716) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.boolean  "admin",      default: false
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "image"
     t.string   "token"
-    t.boolean  "admin",      default: false
     t.datetime "expires_at"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
