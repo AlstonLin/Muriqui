@@ -45,4 +45,5 @@ tmp/
 db/development.sqlite3
 
 #Key file
-/config/keys.yml
+config/keys.yml
+config/database.yml
