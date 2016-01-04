@@ -1,5 +1,6 @@
 class TestCasesController < ApplicationController
-		#-----------------------DEFAULT RESTFUL ACTIONS-------------------------------
+  TEST_CASE_LIMIT = 10
+	#-----------------------DEFAULT RESTFUL ACTIONS-------------------------------
 	def index
 		raise "You must be logged in to access this." unless current_user
 		@problem = Problem.find(params[:problem_id])
@@ -10,6 +11,8 @@ class TestCasesController < ApplicationController
 
 	def create
 		raise "You must be logged in to access this." unless current_user
+    raise "You reached the Test Case limit for today" unless \
+     current_user.get_tests_created_today < TEST_CASE_LIMIT || current_user.admin 
 		@test_case = TestCase.new(test_case_params)
 		@problem = Problem.find(params[:problem_id])
 		@test_case.problem = @problem

@@ -14,4 +14,8 @@ class TestCase < ActiveRecord::Base
 	def update_problem_source
 		self.problem.update_source!
 	end
+  
+  def get_tests_created_today
+    TestCase.where("created_at >= ?", Time.zone.now.beginning_of_day).count
+  end
 end

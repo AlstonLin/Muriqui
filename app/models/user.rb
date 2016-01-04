@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def get_tests_created_today
+    self.test_cases_created.where("created_at >= ?", Time.zone.now.beginning_of_day).count
+  end
 end
