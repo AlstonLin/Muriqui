@@ -43,3 +43,6 @@ Temporary Items
 .apdisk
 tmp/
 db/development.sqlite3
+
+#Key file
+/config/keys.yml
