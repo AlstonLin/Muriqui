@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
-  get '/privacy', :to => redirect('/privacy.html')
+  get '/privacy', to: 'application#privacy'
 
   resources :courses do
     get 'remove'
