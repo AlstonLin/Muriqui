@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+group :production do
+  gem 'unicorn'
+  gem 'pg'
+end
 gem "twitter-bootstrap-rails"
 gem 'codemirror-rails'
 gem 'omniauth-facebook'
