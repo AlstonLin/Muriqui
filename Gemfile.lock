@@ -106,7 +106,6 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.4)
-    pg (0.18.4-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
