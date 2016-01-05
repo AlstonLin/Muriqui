@@ -4595,3 +4595,127 @@ I, [2016-01-04T21:26:05.686968 #6287]  INFO -- :   Rendered courses/index.html.e
 I, [2016-01-04T21:26:05.688974 #6287]  INFO -- : Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 1.9ms)
 I, [2016-01-04T21:26:05.720049 #6290]  INFO -- : Started GET "/assets/application-07fd9bbd9934e8adea62f554e98ff07e9ceadb5792d34f8c7995fc2268aa3b19.js" for 45.62.216.92 at 2016-01-04 21:26:05 -0500
 I, [2016-01-04T21:26:05.721083 #6285]  INFO -- : Started GET "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css" for 45.62.216.92 at 2016-01-04 21:26:05 -0500
+I, [2016-01-04T21:45:28.922971 #28243]  INFO -- : Started GET "/" for 45.62.216.92 at 2016-01-04 21:45:28 -0500
+I, [2016-01-04T21:45:29.057005 #28243]  INFO -- : Processing by CoursesController#index as HTML
+D, [2016-01-04T21:45:29.132353 #28243] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+I, [2016-01-04T21:45:29.156005 #28243]  INFO -- :   Rendered courses/_course_form.html.erb (2.1ms)
+D, [2016-01-04T21:45:29.158072 #28243] DEBUG -- :   [1m[35mCourse Load (0.5ms)[0m  SELECT "courses".* FROM "courses"
+I, [2016-01-04T21:45:29.158728 #28243]  INFO -- :   Rendered courses/_course_list.html.erb (2.2ms)
+I, [2016-01-04T21:45:29.158817 #28243]  INFO -- :   Rendered courses/index.html.erb within layouts/application (7.9ms)
+I, [2016-01-04T21:45:29.160550 #28243]  INFO -- : Completed 200 OK in 103ms (Views: 10.8ms | ActiveRecord: 11.5ms)
+I, [2016-01-04T21:45:29.184399 #28241]  INFO -- : Started GET "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css" for 45.62.216.92 at 2016-01-04 21:45:29 -0500
+I, [2016-01-04T21:45:29.226839 #28243]  INFO -- : Started GET "/assets/application-07fd9bbd9934e8adea62f554e98ff07e9ceadb5792d34f8c7995fc2268aa3b19.js" for 45.62.216.92 at 2016-01-04 21:45:29 -0500
+F, [2016-01-04T21:45:32.700901 #28241] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css"):
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/runtime.rb:18:in `call'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/sendfile.rb:113:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/engine.rb:518:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/application.rb:164:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:562:in `process_client'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:658:in `worker_loop'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:508:in `spawn_missing_workers'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:132:in `start'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.2.1/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.2.1/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.2.1@global/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.2.1@global/bin/ruby_executable_hooks:15:in `<main>'
+
+
+I, [2016-01-04T21:45:50.553629 #28241]  INFO -- : Started GET "/" for 45.62.216.92 at 2016-01-04 21:45:50 -0500
+I, [2016-01-04T21:45:50.561656 #28241]  INFO -- : Processing by CoursesController#index as HTML
+D, [2016-01-04T21:45:50.618866 #28241] DEBUG -- :   [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+I, [2016-01-04T21:45:50.678947 #28241]  INFO -- :   Rendered courses/_course_form.html.erb (7.7ms)
+D, [2016-01-04T21:45:50.689484 #28241] DEBUG -- :   [1m[35mCourse Load (6.9ms)[0m  SELECT "courses".* FROM "courses"
+I, [2016-01-04T21:45:50.690306 #28241]  INFO -- :   Rendered courses/_course_list.html.erb (8.8ms)
+I, [2016-01-04T21:45:50.690409 #28241]  INFO -- :   Rendered courses/index.html.erb within layouts/application (26.2ms)
+I, [2016-01-04T21:45:50.692995 #28241]  INFO -- : Completed 200 OK in 131ms (Views: 24.0ms | ActiveRecord: 14.0ms)
+I, [2016-01-04T21:45:50.712105 #28243]  INFO -- : Started GET "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css" for 45.62.216.92 at 2016-01-04 21:45:50 -0500
+I, [2016-01-04T21:45:50.715080 #28249]  INFO -- : Started GET "/assets/application-07fd9bbd9934e8adea62f554e98ff07e9ceadb5792d34f8c7995fc2268aa3b19.js" for 45.62.216.92 at 2016-01-04 21:45:50 -0500
+F, [2016-01-04T21:45:50.847108 #28243] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css"):
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/runtime.rb:18:in `call'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/sendfile.rb:113:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/engine.rb:518:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/application.rb:164:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:562:in `process_client'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:658:in `worker_loop'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:508:in `spawn_missing_workers'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:132:in `start'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.2.1/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.2.1/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.2.1@global/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.2.1@global/bin/ruby_executable_hooks:15:in `<main>'
+
+
+I, [2016-01-04T21:46:00.304603 #28243]  INFO -- : Started GET "/" for 45.62.216.92 at 2016-01-04 21:46:00 -0500
+I, [2016-01-04T21:46:00.307806 #28243]  INFO -- : Processing by CoursesController#index as HTML
+D, [2016-01-04T21:46:00.311865 #28243] DEBUG -- :   [1m[36mUser Load (3.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+I, [2016-01-04T21:46:00.315576 #28243]  INFO -- :   Rendered courses/_course_form.html.erb (1.6ms)
+D, [2016-01-04T21:46:00.321148 #28243] DEBUG -- :   [1m[35mCourse Load (5.1ms)[0m  SELECT "courses".* FROM "courses"
+I, [2016-01-04T21:46:00.322419 #28243]  INFO -- :   Rendered courses/_course_list.html.erb (6.6ms)
+I, [2016-01-04T21:46:00.322522 #28243]  INFO -- :   Rendered courses/index.html.erb within layouts/application (8.8ms)
+I, [2016-01-04T21:46:00.323925 #28243]  INFO -- : Completed 200 OK in 16ms (Views: 5.4ms | ActiveRecord: 8.2ms)
+I, [2016-01-04T21:46:00.346662 #28241]  INFO -- : Started GET "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css" for 45.62.216.92 at 2016-01-04 21:46:00 -0500
+F, [2016-01-04T21:46:00.349296 #28241] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-d6def57d7ac7d255a93e309b9a1f42793925622dae019948cf11887a7a1763ae.css"):
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.2.0/gems/actionpack-4.2.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/runtime.rb:18:in `call'
+  vendor/bundle/ruby/2.2.0/gems/activesupport-4.2.2/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/rack-1.6.4/lib/rack/sendfile.rb:113:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/engine.rb:518:in `call'
+  vendor/bundle/ruby/2.2.0/gems/railties-4.2.2/lib/rails/application.rb:164:in `call'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:562:in `process_client'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:658:in `worker_loop'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:508:in `spawn_missing_workers'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/lib/unicorn/http_server.rb:132:in `start'
+  /usr/local/rvm/gems/ruby-2.2.1/gems/unicorn-5.0.1/bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.2.1/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.2.1/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.2.1@global/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.2.1@global/bin/ruby_executable_hooks:15:in `<main>'
+
+
+I, [2016-01-04T21:46:00.361759 #28246]  INFO -- : Started GET "/assets/application-07fd9bbd9934e8adea62f554e98ff07e9ceadb5792d34f8c7995fc2268aa3b19.js" for 45.62.216.92 at 2016-01-04 21:46:00 -0500
+I, [2016-01-04T21:47:40.618513 #28693]  INFO -- : Started GET "/" for 45.62.216.92 at 2016-01-04 21:47:40 -0500
+I, [2016-01-04T21:47:40.689669 #28693]  INFO -- : Processing by CoursesController#index as HTML
+D, [2016-01-04T21:47:40.726025 #28693] DEBUG -- :   [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+I, [2016-01-04T21:47:40.764147 #28693]  INFO -- :   Rendered courses/_course_form.html.erb (4.0ms)
+D, [2016-01-04T21:47:40.766951 #28693] DEBUG -- :   [1m[35mCourse Load (0.4ms)[0m  SELECT "courses".* FROM "courses"
+I, [2016-01-04T21:47:40.769451 #28693]  INFO -- :   Rendered courses/_course_list.html.erb (4.6ms)
+I, [2016-01-04T21:47:40.769542 #28693]  INFO -- :   Rendered courses/index.html.erb within layouts/application (12.9ms)
+I, [2016-01-04T21:47:40.773480 #28693]  INFO -- : Completed 200 OK in 84ms (Views: 19.4ms | ActiveRecord: 10.3ms)
+I, [2016-01-04T21:47:40.799855 #28696]  INFO -- : Started GET "/assets/application-75cbd49dd46fd2899d756f4984590d33b1de214ff558af0380faedac8091557c.css" for 45.62.216.92 at 2016-01-04 21:47:40 -0500
+I, [2016-01-04T21:47:40.803513 #28690]  INFO -- : Started GET "/assets/application-07fd9bbd9934e8adea62f554e98ff07e9ceadb5792d34f8c7995fc2268aa3b19.js" for 45.62.216.92 at 2016-01-04 21:47:40 -0500
