@@ -14,7 +14,7 @@
 					<%= button_to "View", assignment_path(a), class: "btn btn-success pull-left btn-lg panel-btn btn_std", style: "margin-top: 10px", :method => :get %>
 					<%= button_to "Delete", assignment_remove_path(a), class: "btn btn-danger pull-left btn-lg btn_std", style: "margin-top: 10px", remote: true, :method => :get %>
 				<% else %>
-					<%= button_to "View btn_std", assignment_path(a), class: "btn btn-success pull-right btn-lg", style: "margin-top: 10px", :method => :get %>
+					<%= button_to "View", assignment_path(a), class: "btn btn-success pull-right btn-lg btn_std", style: "margin-top: 10px", :method => :get %>
 				<% end %>
 			</div>
 		</div>

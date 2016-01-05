@@ -11,13 +11,19 @@ class TestCasesController < ApplicationController
 
 	def create
 		raise "You must be logged in to access this." unless current_user
-    raise "You reached the Test Case limit for today" unless \
-     current_user.get_tests_created_today < TEST_CASE_LIMIT || current_user.admin 
-		@test_case = TestCase.new(test_case_params)
-		@problem = Problem.find(params[:problem_id])
-		@test_case.problem = @problem
-		@test_case.creator = current_user
-		save_created_object @test_case
+
+    @problem = Problem.find(params[:problem_id])
+    if current_user.get_tests_created_today < TEST_CASE_LIMIT || current_user.admin
+  		@test_case = TestCase.new(test_case_params)
+  		@test_case.problem = @problem
+  		@test_case.creator = current_user
+  		save_created_object @test_case
+    else #Limit reached
+      flash[:danger] = "You reached your Test Case limit (10) for today."
+      respond_to do |format|
+        format.js
+      end
+    end
 	end
 	#---------------------OTHER RESTFUL ACTIONS-----------------------------------
 	def toggle_flag
@@ -44,6 +50,7 @@ class TestCasesController < ApplicationController
 
 		respond_to do |format|
 			if test_case.save
+        flash[:success] = "Successfully Removed"
 				@problem.generated_source = @problem.generate_source
 				@problem.save
 				format.html  {
@@ -52,6 +59,7 @@ class TestCasesController < ApplicationController
 				format.json  { render :json => test_case, :status => :success, :location => test_case }
 				format.js
 			else
+        flash[:danger] = "There was a problem while removing"
 				format.html  {
 					render :text => "There was an error while removing the Test Case".html_safe
 				}

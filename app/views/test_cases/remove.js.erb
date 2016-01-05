@@ -1,0 +1,5 @@
+$("#test_list").html('<%= escape_javascript(render partial: "test_cases/test_case_list", :locals => { problem: @problem }) %>');
+$("#flash-container").html('<% flash.each do |key, value| %>\
+ <div class="alert alert-<%= key %>"> <%= escape_javascript(value) %></div>\
+ <% end %>');
+ <% flash.discard %>
