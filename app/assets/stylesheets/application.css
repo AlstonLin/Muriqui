@@ -26,3 +26,9 @@ span.glyphicon-large {
 .panel-btn {
   margin-left: 10px;
 }
+
+.login_button{
+	font-family: Arial-black;
+	padding: 20px;
+}
+

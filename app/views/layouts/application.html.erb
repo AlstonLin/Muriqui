@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
   <!-- Navigation bar -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -37,11 +38,12 @@
     </div>
   </nav>
   <!-- Actual Content -->
+
   <div class="container">
     <% if current_user %>
     	<%= yield %>
     <% else %>
-    	<%= button_to "Login with Facebook", "/auth/facebook", :method => :get %>
+    	<%= button_to "Login with Facebook", "/auth/facebook", class: 'login_button',      :method => :get %>
     <% end %>
   </div>
 </body>

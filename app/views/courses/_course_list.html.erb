@@ -1,5 +1,6 @@
 <% courses.each do |c| %>
 	<% if !c.removed %>
+	<div class="row-container">
 		<div class="row">
 			<div class="col-md-4">
 				<h2><%= c.code %></h2>
@@ -9,14 +10,15 @@
 				<h2><%= c.name %></h2>
 			</div>
 
-			<div class="col-md-3 col-md-offset-1">
+			<div class="col-md-3 col-md-offset-1"">
 				<% if current_user.admin %>
-					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-left btn-lg panel-btn", :method => :get %>
-					<%= button_to "Delete", course_remove_path(c), class: "btn btn-danger pull-left btn-lg", :method => :get, remote: true %>
+					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-left btn-lg panel-btn btn_std", :method => :get %>
+					<%= button_to "Delete", course_remove_path(c), class: "btn btn-danger pull-left btn-lg btn_std", :method => :get, remote: true %>
 				<% else %>
-					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-right btn-lg panel-btn", :method => :get %>
+					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-right btn-lg panel-btn btn_std", :method => :get %>
 				<% end %>
 			</div>
 		</div>
+	</div>
 	<% end %>
 <% end %>
