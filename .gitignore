@@ -50,3 +50,6 @@ config/database.yml
 
 #Vendor files
 vendor/*
+
+#Gemfile
+Gemfile
