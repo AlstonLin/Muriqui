@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+	#-------------------------------RESTFUL ACTIONS-------------------------------
+	def privacy
+	end
 	#----------------COMMONLY USED ACTIONS FOR CONTROLLERS------------------------
 	def remove_object(object)
 		object.removed = true
