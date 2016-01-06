@@ -12,17 +12,18 @@ class Problem < ActiveRecord::Base
 
 	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
-		template = ['#include <stdio.h>',
-			'#include <assert.h>',
-			'#include "ENTER_FILE_NAME_HERE"',
-			'void main(){',
-			'	const char* inputs[{{count}}];',
+		template = ['#include <iostream>',
+			'#include <string>',
+			'using namespace std;',
+			'int FUNCTION_HERE();',
+			'int main(){',
+			'	string inputs[{{count}}];',
 			'	{{each}}',
 			'	inputs[{{index}}] = "{{input}}";',
 			'	outputs[{{index}}] = "{{output}}";',
 			'	assert(INSERT_ASSERT_HERE);',
 			'	{{end}}',
-			'	printf("Passed All Test Cases\n");',
+			'	cout << "Passed All Test Cases"',
 		'}'].join("\n") + "\n"
     attr_with_defaults = {:source => template}.merge(attributes)
     super(attr_with_defaults)
