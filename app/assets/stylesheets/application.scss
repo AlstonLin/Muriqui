@@ -23,6 +23,16 @@ span.glyphicon-large {
   margin-top: 15px;
 }
 
+.form-container{
+	background-color:white;
+	padding: 20px;
+	border-radius: 3px;
+	width:300px;
+	margin: 0 auto;
+
+}
+
+
 .panel-btn {
   margin-left: 10px;
 }
@@ -34,12 +44,19 @@ span.glyphicon-large {
 	display: block;
 	position: relative;
 	margin: 0 auto;
-	/*fix the path to image asset*/
 	background: image-url('facebook_login_logo.png');
 	background-size: 369px 70px;
 	padding: 0px 0px 0px 0px;
-	opacity: 0.8;
+	opacity: 0.9;
 	border: none;
+}
+
+.col-md-6{
+	border-right: 1px solid #f0f0f0;
+}
+
+.no_border{
+	border-right: none ;
 }
 
 .login_button:hover{
@@ -49,24 +66,20 @@ span.glyphicon-large {
 .banner{
 	height: 400px;
 	width: 100%;
-	margin-top: 80px;
+	margin-top: 20px;
 	background-color: #003a4d;
 	padding-left: 100px;
 	padding-right: 100px;
-	padding-top: 70px;
-}
-
-.login-button-container{
-	padding-bottom: 20px;
-	border-bottom: 2px solid #f0f0f0;
+	padding-top: 65px;
 }
 
 .motto{
 	display: none;
+
 }
 
 .motto p{
-	background-color: #191919;
+	background-color: #0c0c0c;
 	font-size: 20px;
 	color: #f0f0f0;
 	padding: 20px;
