@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "recaptcha", require: "recaptcha/rails"
 # Authorization
 gem 'devise'
 gem 'omniauth-facebook'
