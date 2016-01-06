@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   # Validation
   validates :name, presence: true
   validates :email, presence: true
+  validates_format_of :email, with: /\@uwaterloo\.ca/, message: 'You must use a @uwaterloo.ca email',
+    :unless => Proc.new { |u| u.uid? }
   # Auth
   devise :omniauthable, :database_authenticatable, :confirmable, \
    :registerable, :recoverable, :rememberable, :trackable, :validatable
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
       user.image = auth.info.image # assuming the user model has an image
-      user.skip_confirmation! 
+      user.skip_confirmation!
     end
   end
   # Other Methods
