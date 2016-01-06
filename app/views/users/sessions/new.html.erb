@@ -26,6 +26,8 @@
     <br>
     <%= link_to "Sign Up", "/users/sign_up", :method => :get %>
     <br>
+    <%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get %>
+    <br>
     <div class="login-button-container">
       <%= link_to "", user_omniauth_authorize_path(:facebook), class: 'login_button', :method => :get %>
     </div>
