@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+    <!-- For Mobile + Brand -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseNavbar">
         <span class="icon-bar"></span>
@@ -10,13 +10,21 @@
       <a class="navbar-brand" href="/">Muriqui</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Only shown if logged in -->
     <div class="collapse navbar-collapse" id="collapseNavbar">
       <% if current_user %>
         <ul class="nav navbar-nav">
           <%= yield :navbar %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <!-- If not from Facebook -->
+          <% if !current_user.uid %>
+            <li>
+              <%= button_to "Change Password", edit_user_registration_path,
+              class: 'btn pull-right btn-default navbar-btn', :method => :get %>
+            </li>
+          <% end %>
+          <!-- Logout Button -->
           <li>
             <%= button_to "Logout", "/users/sign_out",
             class: 'btn pull-right btn-default navbar-btn', :method => :delete %>
