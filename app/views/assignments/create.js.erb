@@ -1,6 +1,4 @@
 $("#assignments_panel").html('<%= escape_javascript( render :partial => "assignment_list", :locals => {course: @course} )%>');
 $("#assignment_name").val('');
-$("#flash-container").html('<% flash.each do |key, value| %>\
- <div class="alert alert-<%= key %>"> <%= escape_javascript(value) %></div>\
- <% end %>');
- <% flash.discard %>
+$("#flash-container").html('<%= escape_javascript(render :partial => "shared/flash_box") %>');
+<% flash.discard %>

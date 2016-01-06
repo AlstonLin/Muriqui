@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *= require_tree .
+ *= require_self
+ *= require codemirror
+ */
+
+ .CodeMirror {
+   height: auto !important;
+ }
+
+span.glyphicon-large {
+  font-size: 2em;
+  margin-top: 15px;
+}
+
+.panel-btn {
+  margin-left: 10px;
+}
+
+.login_button{
+	font-family: Arial-black;
+	width: 369px;
+	height: 70px;
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	/*fix the path to image asset*/
+	background: image-url('facebook_login_logo.png');
+	background-size: 369px 70px;
+	padding: 0px 0px 0px 0px;
+	opacity: 0.8;
+	border: none;
+}
+
+.login_button:hover{
+	opacity: 1;
+}
+
+.banner{
+	height: 400px;
+	width: 100%;
+	margin-top: 80px;
+	background-color: #003a4d;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 70px;
+}
+
+.login-button-container{
+	padding-bottom: 20px;
+	border-bottom: 2px solid #f0f0f0;
+}
+
+.motto{
+	display: none;
+}
+
+.motto p{
+	background-color: #191919;
+	font-size: 20px;
+	color: #f0f0f0;
+	padding: 20px;
+	margin: 30px;
+	text-align: center;
+}

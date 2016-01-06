@@ -1,12 +1,9 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
+	before_action :authenticate_user!
+	before_action :configure_permitted_parameters, if: :devise_controller?
 
 	#----------------GLOBAL HELPER METHODS----------------------------------------
-	def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
-  end
-  helper_method :current_user
-
 	#-------------------------------RESTFUL ACTIONS-------------------------------
 	def privacy
 	end
@@ -16,14 +13,14 @@ class ApplicationController < ActionController::Base
 		object.remover = current_user
 		respond_to do |format|
 			if object.save
-				flash[:success] = "Successfully Removed"
+				flash[:notice] = "Successfully Removed"
 				format.html  {
 					render :text => 'This page should not be shown.'.html_safe
 				}
-				format.json  { render :json => object, :status => :success, :location => object }
+				format.json  { render :json => object, :status => :notice, :location => object }
 				format.js
 			else
-				flash[:danger] = "There was a problem while removing"
+				flash[:alert] = "There was a problem while removing"
 				format.html  {
 					render :text => "There was an error while removing".html_safe
 				}
@@ -36,7 +33,7 @@ class ApplicationController < ActionController::Base
 	def save_created_object(object)
 		respond_to do |format|
 			if object.save
-				flash[:success] = "Successfully Created"
+				flash[:notice] = "Successfully Created"
 				format.html  {
 					redirect_to object
 				}
@@ -46,15 +43,6 @@ class ApplicationController < ActionController::Base
 					 :location => object
 				 }
     		format.js
-			else
-				flash[:danger] = "There was a problem while creating"
-				format.html  {
-					render :action => "new"
-				}
-    		format.json  {
-					render :json => object.errors,
-					:status => :unprocessable_entity
-				}
 			end
 		end
 	end
@@ -64,13 +52,13 @@ class ApplicationController < ActionController::Base
 		respond_to do |format|
 			if object.save
 				format.html  {
-					flash[:success] = "Successfully Updated"
+					flash[:notice] = "Successfully Updated"
 					redirect_to object
 				}
 				format.json
 				format.js
 			else
-				flash[:danger] = "There was a problem while updating"
+				flash[:alert] = "There was a problem while updating"
 				format.html  {
 					render :text => "An error occured while saving".html_safe
 				}
@@ -79,5 +67,17 @@ class ApplicationController < ActionController::Base
 			end
 		end
 	end
+	#-----------------------------------------OTHER-------------------------------
+	protected
+	def configure_permitted_parameters
+		devise_parameter_sanitizer.for(:sign_up) << :name
+	end
 
+	def after_sign_in_path_for(user)
+		courses_path
+	end
+
+	def after_sign_out_path_for(user)
+		courses_path
+	end
 end

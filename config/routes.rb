@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root 'courses#index'
-
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
+  #Auth
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  #Routing links to controllers
   get '/privacy', to: 'application#privacy'
-
+  #Resources
   resources :courses do
     get 'remove'
     resources :assignments, shallow: true do

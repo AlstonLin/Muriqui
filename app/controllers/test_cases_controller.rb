@@ -19,7 +19,7 @@ class TestCasesController < ApplicationController
   		@test_case.creator = current_user
   		save_created_object @test_case
     else #Limit reached
-      flash[:danger] = "You reached your Test Case limit (10) for today."
+      flash[:alert] = "You reached your Test Case limit (10) for today."
       respond_to do |format|
         format.js
       end
@@ -50,7 +50,7 @@ class TestCasesController < ApplicationController
 
 		respond_to do |format|
 			if test_case.save
-        flash[:success] = "Successfully Removed"
+        flash[:alert] = "Successfully Removed"
 				@problem.generated_source = @problem.generate_source
 				@problem.save
 				format.html  {
@@ -59,7 +59,7 @@ class TestCasesController < ApplicationController
 				format.json  { render :json => test_case, :status => :success, :location => test_case }
 				format.js
 			else
-        flash[:danger] = "There was a problem while removing"
+        flash[:alert] = "There was a problem while removing"
 				format.html  {
 					render :text => "There was an error while removing the Test Case".html_safe
 				}

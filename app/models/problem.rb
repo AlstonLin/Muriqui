@@ -1,29 +1,29 @@
 class Problem < ActiveRecord::Base
 	self.primary_key = 'id'
-	#Relationships
+	# Relationships
 	has_many :test_cases
 	belongs_to :assignment
 	belongs_to :creator, :class_name => 'User', :foreign_key => 'creator_id'
 	belongs_to :remover, :class_name => 'User', :foreign_key => 'remover_id'
-	#Validation
+	# Validation
 	validates :number, presence: true
 	validates :creator, presence: true
 	validates :source, presence: true
 
 	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
-		template = '#include <stdio.h>
-#include <assert.h>
-#include "ENTER_FILE_NAME_HERE"
-void main(){
-	const char* inputs[{{count}}];
-	{{each}}
-	inputs[{{index}}] = "{{input}}";
-	outputs[{{index}}] = "{{output}}";
-	assert(INSERT_ASSERT_HERE);
-	{{end}}
-	printf("Passed All Test Cases\n");
-}'
+		template = ['#include <stdio.h>',
+			'#include <assert.h>',
+			'#include "ENTER_FILE_NAME_HERE"',
+			'void main(){',
+			'	const char* inputs[{{count}}];',
+			'	{{each}}',
+			'	inputs[{{index}}] = "{{input}}";',
+			'	outputs[{{index}}] = "{{output}}";',
+			'	assert(INSERT_ASSERT_HERE);',
+			'	{{end}}',
+			'	printf("Passed All Test Cases\n");',
+		'}'].join("\n") + "\n"
     attr_with_defaults = {:source => template}.merge(attributes)
     super(attr_with_defaults)
   end
@@ -32,25 +32,25 @@ void main(){
 		test_cases = self.test_cases
 		source = self.source
 		generated_source = source.dup
-		#Splits the strings from regexes
+		# Splits the strings from regexes
 		error_prefix = "ERROR PARSING SOURCE:"
-		#{{count}}
+		# {{count}}
 		generated_source.gsub! '{{count}}', self.test_cases.count.to_s
-		#{{each}}
+		# {{each}}
 		split = generated_source.split(/{{each}}/)
 		if split.count != 2
 			return error_prefix + "{{each}} must be used exactly once"
 		end
 		before = split[0]
 		after = split[1]
-		#{{end}}
+		# {{end}}
 		split = after.split(/{{end}}/)
 		if split.count != 2
 			return error_prefix + "{{end}} must be used exactly once after {{each}}"
 		end
 		test_loop = split[0]
 		after = split[1]
-		#Starts building the code
+		# Starts building the code
 		generated_source = before
 		counter = 0
 		self.test_cases.each do |test|

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  #Relationships
+  # Relationships
   has_and_belongs_to_many :flags, :class_name => 'TestCase'
   has_many :courses_created, :class_name => 'Course', :foreign_key => 'creator_id'
   has_many :courses_removed, :class_name => 'Course', :foreign_key => 'remover_id'
@@ -9,19 +9,23 @@ class User < ActiveRecord::Base
   has_many :problems_removed, :class_name => 'Problem', :foreign_key => 'remover_id'
   has_many :test_cases_created, :class_name => 'TestCase', :foreign_key => 'creator_id'
   has_many :test_cases_removed, :class_name => 'TestCase', :foreign_key => 'remover_id'
-  #------------------------FACEBOOK AUTH----------------------------------------
-  def self.omniauth(auth)
+  # Validation
+  validates :name, presence: true
+  validates :email, presence: true
+  # Auth
+  devise :omniauthable, :database_authenticatable, \
+   :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
+      user.email = auth.info.email
       user.name = auth.info.name
-      user.image = auth.info.image
-      user.token = auth.credentials.token
-      user.expires_at = Time.at(auth.credentials.expires_at)
-      user.save!
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.image = auth.info.image # assuming the user model has an image
     end
   end
-
+  # Other Methods
   def get_tests_created_today
     self.test_cases_created.where("created_at >= ?", Time.zone.now.beginning_of_day).count
   end
