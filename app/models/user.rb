@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true
   # Auth
-  devise :omniauthable, :database_authenticatable, \
+  devise :omniauthable, :database_authenticatable, :confirmable, \
    :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   def self.from_omniauth(auth)

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'courses#index'
   #Auth
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
+    :registrations => "registrations" }
   #Routing links to controllers
   get '/privacy', to: 'application#privacy'
   #Resources
