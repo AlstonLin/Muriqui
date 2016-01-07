@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_scope :user do
-    root to: "devise/sessions#new"
+  #Defines root page
+  authenticated :user do
+    root to: "courses#index", :as => :authenticated_root
+  end
+  unauthenticated do
+    root to: redirect("/users/sign_in")
   end
   #Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
