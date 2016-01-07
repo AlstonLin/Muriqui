@@ -1,4 +1,4 @@
-<% content_for :body_class => "login_body" %>
+<% content_for :body_class, "login_body" %>
 <div class="banner">
   <div class="row">
     <div class="col-md-6">
@@ -13,7 +13,7 @@
       <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
-s
+
     <% if devise_mapping.rememberable? -%>
       <div class="field">
         <%= f.check_box :remember_me %>
@@ -40,5 +40,3 @@ s
   </div>
   <% end %>
 </div>
-
-
