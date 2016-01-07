@@ -1,35 +1,42 @@
 <% content_for :body_class, "login_body" %>
 <div class="banner">
+  <!--
+  <div>
+    <h2 style="text-align: center;">Muriqui</h4>
+    <p style="text-align: center;">Log in or sign in with Facebook</p>
+  </div>
+-->
+
   <div class="row">
     <div class="col-md-6">
-      <div class="form-container" style="opacity: 1;">
+      <div class="form-container">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
+    <div class="field" style="color: #f0f0f0">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
 
-    <div class="field">
+    <div class="field" style="color: #f0f0f0">
       <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
     <% if devise_mapping.rememberable? -%>
-      <div class="field">
+      <div class="field" style="color: #f0f0f0">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
     <% end -%>
 
-    <div class="actions">
+    <div class="actions" style="width: 50px; margin: 0 auto;">
       <%= f.submit "Log in" %>
     </div>
-
+    <div class= "link">
     <%= link_to "Forgot Password", "/users/password/new", :method => :get %>
     <br>
     <%= link_to "Sign Up", "/users/sign_up", :method => :get %>
     <br>
-    <%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get %>
+    <%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get %></div>
   </div>
     </div>
     <div class="col-md-6 no_border">

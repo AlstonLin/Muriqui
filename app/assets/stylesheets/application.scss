@@ -24,12 +24,23 @@ span.glyphicon-large {
 }
 
 .form-container{
-	background-color:white;
+	background-color: rgba(38, 38, 38, 1.0);
 	padding: 20px;
 	border-radius: 3px;
 	width:300px;
 	margin: 0 auto;
 
+}
+
+.field{
+	margin: 0 auto;
+	width: 180px;
+}
+
+.link{
+	width: 180px;
+	margin: auto;
+	margin-top: 20px;
 }
 
 
@@ -43,7 +54,8 @@ span.glyphicon-large {
 	height: 70px;
 	display: block;
 	position: relative;
-	margin: 0 auto;
+	margin: auto;
+	margin-top: 90px;
 	background: image-url('facebook_login_logo.png');
 	background-size: 369px 70px;
 	padding: 0px 0px 0px 0px;
@@ -52,7 +64,7 @@ span.glyphicon-large {
 }
 
 .col-md-6{
-	border-right: 1px solid #f0f0f0;
+	border-right: 1px solid #191919;
 }
 
 .no_border{
@@ -64,17 +76,14 @@ span.glyphicon-large {
 }
 
 .banner{
-	height: 400px;
 	width: 100%;
-	margin-top: 20px;
-	background-color: #262626;
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 65px;
-	opacity: 0.9;
+	margin-top: 40px;
+	background-color: rgba(255,255,255, 0.6);
+	padding: 40px 70px 40px 70px;
 }
 
 .login_body{
 
-	background: url(https://uwaterloo.ca/math/sites/ca.math/files/uploads/images/campus-aerial-east-side.jpg);
+	background: url(http://www.marketwire.com/library/MwGo/2014/10/29/11G024914/Images/Waterloo_Engineering_E7_rendering-1153536420474.jpg);
+	background-size: 100% 200%;
 }
