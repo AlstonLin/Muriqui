@@ -24,7 +24,8 @@ span.glyphicon-large {
 }
 
 .form-container{
-	background-color: rgba(38, 38, 38, 1.0);
+	border: 1px dashed black;
+	background: rgba(38, 38, 38, 0.87);
 	padding: 20px;
 	border-radius: 3px;
 	width:300px;
@@ -55,20 +56,12 @@ span.glyphicon-large {
 	display: block;
 	position: relative;
 	margin: auto;
-	margin-top: 90px;
+	margin-top: 40px;
 	background: image-url('facebook_login_logo.png');
 	background-size: 369px 70px;
 	padding: 0px 0px 0px 0px;
 	opacity: 0.9;
 	border: none;
-}
-
-.col-md-6{
-	border-right: 1px solid #191919;
-}
-
-.no_border{
-	border-right: none ;
 }
 
 .login_button:hover{
@@ -85,5 +78,5 @@ span.glyphicon-large {
 .login_body{
 
 	background: url(http://www.marketwire.com/library/MwGo/2014/10/29/11G024914/Images/Waterloo_Engineering_E7_rendering-1153536420474.jpg);
-	background-size: 100% 200%;
+	background-size: 100% 140%;
 }
