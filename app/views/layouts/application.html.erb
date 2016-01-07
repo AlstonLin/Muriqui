@@ -8,9 +8,11 @@
 </head>
 
 <body>
-  <body style="background-color: #f0f0f0;">
+  <body>
   <!-- Navigation bar -->
+  <% if current_user %>
     <%= render :partial => "shared/navbar" %>
+  <% end %>
   <!-- Actual Content -->
   <div class="container">
     <%= render :partial => "shared/flash_box" %>

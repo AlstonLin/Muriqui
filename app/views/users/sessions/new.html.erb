@@ -1,3 +1,4 @@
+<% content_for :body_class => "login_body" %>
 <div class="banner">
   <div class="row">
     <div class="col-md-6">
@@ -12,7 +13,7 @@
       <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
-
+s
     <% if devise_mapping.rememberable? -%>
       <div class="field">
         <%= f.check_box :remember_me %>
@@ -32,7 +33,6 @@
   </div>
     </div>
     <div class="col-md-6 no_border">
-      <h4 style="color: #f0f0f0; text-align: center; margin-bottom: 30px; font-size: 40px; font-weight: bold;">OR</h4>
       <div class="login-button-container">
       <%= link_to "", user_omniauth_authorize_path(:facebook), class: 'login_button', :method => :get %>
     </div>
@@ -41,14 +41,4 @@
   <% end %>
 </div>
 
-    
-    <div class="motto">
-      <p>
-      Share test cases with friends
-    </p>
-    </div>
-    <div class="motto">
-      <p>
-      Never miss an edge-case
-    </p>
-    </div>
+
