@@ -10,22 +10,55 @@ class Problem < ActiveRecord::Base
 	validates :creator, presence: true
 	validates :source, presence: true
 	validates :instructions, presence: true
+	#--------------------------TEMPLATES------------------------------------------
+	# TODO: Have course creator make them?
+	CPP_PRINT_TEMPLATE = ['#include <iostream>',
+			'#include <string>',
+			'#include <sstream>',
+			'#include <assert.h>',
+			'#include <cstdio>',
+			'using namespace std;',
+			'',
+			'int mainA();',
+			'',
+			'bool checkTestCase(string input, string output){',
+			'  istringstream cinStream(input);',
+			'  ostringstream coutStream;',
+			'  cout.rdbuf(coutStream.rdbuf());',
+			'  cin.rdbuf(cinStream.rdbuf());',
+			'  mainA();',
+			'  if(coutStream.str() != output){',
+			'    printf("----FAILED----\nInput\n%s\nExpected\n%s\nActual\n%s", input.c_str(), output.c_str(),',
+			'    coutStream.str().c_str());',
+			'  } else{',
+			'    printf("----PASSED----\nInput\n%s\nExpected\n%s\nActual\n%s", input.c_str(), output.c_str(),',
+			'    coutStream.str().c_str());',
+			'  }',
+			'}',
+			'int main(){',
+			'  {{each}}',
+			'  checkTestCase("{{input}}", "{{output}}");',
+			'  {{end}}',
+			'  printf("----------DONE----------");',
+			'}'
+	].join("\n") + "\n"
+
+	CPP_FUNCTION_TEMPLATE = ['#include <iostream>',
+		'#include <string>',
+		'using namespace std;',
+		'int FUNCTION_HERE();',
+		'int main(){',
+		'	string inputs[{{count}}];',
+		'	{{each}}',
+		'	inputs[{{index}}] = "{{input}}";',
+		'	outputs[{{index}}] = "{{output}}";',
+		'	assert(INSERT_ASSERT_HERE);',
+		'	{{end}}',
+		'	cout << "Passed All Test Cases"',
+	'}'].join("\n") + "\n"
 	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
-		template = ['#include <iostream>',
-			'#include <string>',
-			'using namespace std;',
-			'int FUNCTION_HERE();',
-			'int main(){',
-			'	string inputs[{{count}}];',
-			'	{{each}}',
-			'	inputs[{{index}}] = "{{input}}";',
-			'	outputs[{{index}}] = "{{output}}";',
-			'	assert(INSERT_ASSERT_HERE);',
-			'	{{end}}',
-			'	cout << "Passed All Test Cases"',
-		'}'].join("\n") + "\n"
-    attr_with_defaults = {:source => template}.merge(attributes)
+    attr_with_defaults = {:source => CPP_PRINT_TEMPLATE}.merge(attributes)
     super(attr_with_defaults)
   end
 
