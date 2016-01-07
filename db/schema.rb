@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160106033739) do
     t.integer  "part"
     t.boolean  "removed",          default: false
     t.text     "source"
+    t.text     "instructions"
     t.text     "generated_source"
     t.integer  "creator_id"
     t.integer  "remover_id"

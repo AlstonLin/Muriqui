@@ -24,11 +24,16 @@
 	        <%= form.number_field :part, class: "form-control input-lg", placeholder: "Part (Optional)" %>
 	      </div>
 	    </div>
+			<!-- Instructions -->
+			<div class="col-md-10 col-md-offset-1">
+				<h3> <%= form.label :instructions,  "Instructions" %> </h3>
+	      <%= form.text_area :instructions, class:"form-control", placeholder:"Instructions Here", style:"width:100%; height:250px;" %>
+	    </div>
 			<!-- Text area for code -->
 	    <div class="col-md-10 col-md-offset-1">
 				<h3> <%= form.label :source,  "Unit Testing Source Template" %> </h3>
 				<h4>The format must remain the same as the default to automatically generate the unit test source code</h4>
-	      <%= form.text_area :source, class:"form control", id: "codemirror", placeholder:"Source Here", style:"width:100%; height:250px;" %>
+	      <%= form.text_area :source, class:"form control", id: "codemirror", style:"width:100%; height:250px;" %>
 	    </div>
 			<!-- Submit button -->
 	    <div class="form-group text-center">

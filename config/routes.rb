@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'courses#index'
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   #Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations" }

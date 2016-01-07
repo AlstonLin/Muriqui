@@ -8,9 +8,10 @@
 
 <div class="page-header row">
 	<h1 class="pull-left"> <%= get_name %> </h1>
-	<%= button_to "Test Cases", problem_test_cases_path(@problem.id), class: 'btn btn-lg btn-success pull-right', :method => :get %>
+	<%= button_to "Test Cases", problem_test_cases_path(@problem.id),
+		class: 'btn btn-lg btn-success pull-right', :method => :get %>
 </div>
-
+<h3><%= simple_format @problem.instructions, {}, wrapper_tag: "h4" %></h3>
 <div class="panel panel-warning" id="source">
 	<%= render :partial => "test_source", :locals => { problem: @problem } %>
 </div>

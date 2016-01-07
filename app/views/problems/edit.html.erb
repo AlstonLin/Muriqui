@@ -26,6 +26,11 @@
 		        <%= form.number_field :part, class: "form-control input-lg", placeholder: "Part (Optional)" %>
 		      </div>
 		    </div>
+				<!-- Instructions -->
+				<div class="col-md-10 col-md-offset-1">
+					<h3> <%= form.label :instructions,  "Instructions" %> </h3>
+		      <%= form.text_area :instructions, class:"form-control", placeholder:"Instructions Here", style:"width:100%; height:250px;" %>
+		    </div>
 				<!-- Text area for code-->
 		    <div class="col-md-10 col-md-offset-1">
 					<h3> <%= form.label :source,  "Unit Testing Source Template" %> </h3>

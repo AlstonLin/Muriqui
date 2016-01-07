@@ -9,7 +9,7 @@ class Problem < ActiveRecord::Base
 	validates :number, presence: true
 	validates :creator, presence: true
 	validates :source, presence: true
-
+	validates :instructions, presence: true
 	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
 		template = ['#include <iostream>',

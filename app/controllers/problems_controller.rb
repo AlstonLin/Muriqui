@@ -62,6 +62,6 @@ class ProblemsController < ApplicationController
 	end
 	#---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def problem_params
-      params.require(:problem).permit(:number, :part, :source)
+      params.require(:problem).permit(:number, :part, :source, :instructions)
   end
 end
