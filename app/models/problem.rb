@@ -40,6 +40,7 @@ class Problem < ActiveRecord::Base
 	'def testCase(filename, inp, out):',
 	'  actual = getOutput(filename, inp)',
 	'  output = out.split("\n")',
+  '  inp = inp.split("\n")',
 	'  if len(actual) == len(output):',
 	'    for i in range(len(actual)):',
 	'      if actual[i] != output[i]:',
@@ -56,8 +57,7 @@ class Problem < ActiveRecord::Base
   '	print "Congratulations! All the test cases has passed"',
 	'else:',
   '	print "------------------------------"',
-  '	print "Failed ", failedCount, " tests. :("'
-	].join("\n") + "\n"
+  '	print "Failed ", failedCount, " tests. :("'].join("\n") + "\n"
 
 	CPP_FUNCTION_TEMPLATE = ['#include <iostream>',
 		'#include <string>',
