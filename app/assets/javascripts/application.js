@@ -16,20 +16,20 @@
 //= require turbolinks
 //= require_tree .
 //= require codemirror
-//= require codemirror/modes/clike
+//= require codemirror/modes/python
 
 var ready = function(){
   $("#codemirror").each(function() {
     CodeMirror.fromTextArea($(this).get(0), {
       lineNumbers: true,
-      mode: "text/x-c++src"
+      mode: "text/x-python"
     });
   });
 
   $("#codemirror-read").each(function() {
     CodeMirror.fromTextArea($(this).get(0), {
       lineNumbers: true,
-      mode: "text/x-c++src",
+      mode: "text/x-python",
       readOnly: true,
       scrollbarStyle: "null"
     });
