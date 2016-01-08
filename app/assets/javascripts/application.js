@@ -17,6 +17,7 @@
 //= require_tree .
 //= require codemirror
 //= require codemirror/modes/python
+//= require codemirror/modes/clike
 
 var ready = function(){
   $("#codemirror").each(function() {
@@ -34,9 +35,6 @@ var ready = function(){
       scrollbarStyle: "null"
     });
   });
-
-
-
   $('.motto').slideDown(1000);
 };
 

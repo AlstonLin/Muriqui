@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'remove'
       resources :problems, shallow: true do
         get 'remove'
+        get 'get_mode_template'
         resources :test_cases, shallow: true do
           get 'toggle_flag'
           get 'remove'

@@ -72,6 +72,8 @@ class Problem < ActiveRecord::Base
 		'	{{end}}',
 		'	cout << "Passed All Test Cases"',
 	'}'].join("\n") + "\n"
+
+	MODES = {"Python" => "text/x-python", "C++" => "text/x-c++src"}
 	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
     attr_with_defaults = {:source => PYTHON_PRINT_TEMPLATE}.merge(attributes)
