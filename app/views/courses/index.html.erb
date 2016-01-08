@@ -3,8 +3,8 @@
 </div>
 
 <% if current_user %>
-	<div class="panel panel-primary">
-		<div class="panel-heading">
+	<div class="panel">
+		<div class="panel-heading panel-heading-style">
 			<% if current_user.admin %>
 				<%= render partial: "course_form", :locals => { course: @course} %>
 			<% end %>

@@ -1,5 +1,5 @@
 <% content_for :navbar do %>
-	<li> <%= link_to  @course.code, @course %> </li>
+	<li> <%= link_to  @course.code, @course, class: "nav-text" %> </li>
 	<li> <a> > </a> </li>
 	<li> <%= link_to @assignment.name, @assignment %> </li>
 <% end %>
@@ -8,13 +8,13 @@
 	<h1><%= @assignment.name %></h1>
 </div>
 
-<div class="panel panel-success">
-	<div class="panel-heading">
+<div class="panel">
+	<div class="panel-heading panel-heading-style">
 		<% if current_user &&  current_user.admin %>
-			<%= button_to "New Problem", new_assignment_problem_path(@assignment), class: "btn btn-lg btn-info", :method => :get %>
+			<%= button_to "New Problem", new_assignment_problem_path(@assignment), class: "btn btn-lg btn-style", :method => :get %>
 		<% end %>
 	</div>
-	
+
 	<div class="panel-body" id="problems_panel">
 		<%= render partial: "problems/problem_list", :locals => { assignment: @assignment } %>
 	</div>

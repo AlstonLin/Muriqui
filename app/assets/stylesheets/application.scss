@@ -14,7 +14,7 @@
  *= require codemirror
  */
 
- .CodeMirror {
+.CodeMirror {
    height: auto !important;
  }
 
@@ -23,7 +23,7 @@ span.glyphicon-large {
   margin-top: 15px;
 }
 
-.form-container{
+.form-container {
 	border: 1px dashed black;
 	background: rgba(38, 38, 38, 0.87);
 	padding: 20px;
@@ -31,6 +31,44 @@ span.glyphicon-large {
 	width:300px;
 	margin: 0 auto;
 
+}
+
+.navbar-brand-style {
+  color: white !important;
+  margin-top: 3px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.nav-style {
+  background-color: #0D47A1;
+  border: none;
+  border-radius: 0px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.navbar .nav > li > a {
+  float: none;
+  font-size: 14px;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.nav-btn-style {
+  margin-top: 12px;
+  margin-right: 10px;
+}
+
+.panel-heading-style {
+  background-color: #1565C0;
+  color: white;
+}
+
+.btn-style {
+  background-color: #0D47A1;
+  color: white;
 }
 
 
@@ -82,5 +120,5 @@ span.glyphicon-large {
 
 	background: image-url('bg.jpg');
 	background-size: 100% 120%;
-	
+
 }
