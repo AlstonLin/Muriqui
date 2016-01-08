@@ -33,6 +33,7 @@ span.glyphicon-large {
 
 }
 
+
 .field{
 	margin: 0 auto;
 	width: 180px;
@@ -69,14 +70,17 @@ span.glyphicon-large {
 }
 
 .banner{
-	width: 100%;
-	margin-top: 40px;
+	width: 80%;
 	background-color: rgba(255,255,255, 0.6);
-	padding: 40px 70px 40px 70px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	margin: auto;
+	margin-top: 40px;
 }
 
 .login_body{
 
-	background: url(http://www.marketwire.com/library/MwGo/2014/10/29/11G024914/Images/Waterloo_Engineering_E7_rendering-1153536420474.jpg);
-	background-size: 100% 140%;
+	background: image-url('bg.jpg');
+	background-size: 100% 120%;
+	
 }
