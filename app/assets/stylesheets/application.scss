@@ -25,18 +25,23 @@ span.glyphicon-large {
 
 .form-container{
 	border: 1px dashed black;
-	background: rgba(38, 38, 38, 0.87);
+	background: rgba(38, 38, 38, 0.87); 
+	/*background-color: rgba(38,38,38, 0.6);*/
+	width: 369px;
+	height: 380px;
 	padding: 20px;
 	border-radius: 3px;
-	width:300px;
 	margin: 0 auto;
-
 }
 
+.inner-form-container{
+	width: 260px;
+	margin: auto;
+}
 
 .field{
-	margin: 0 auto;
-	width: 180px;
+	margin-top: 20px;
+	font-size: 20px;
 }
 
 .link{
@@ -45,6 +50,12 @@ span.glyphicon-large {
 	margin-top: 20px;
 }
 
+.link_to{
+color: red;
+}
+.link_to:hover{
+	background-color: none;
+}
 
 .panel-btn {
   margin-left: 10px;
@@ -70,17 +81,28 @@ span.glyphicon-large {
 }
 
 .banner{
-	width: 80%;
+	width: 50%;
 	background-color: rgba(255,255,255, 0.6);
-	padding-top: 70px;
-	padding-bottom: 70px;
+	padding-bottom: 30px;
+	padding-top: 30px;
 	margin: auto;
-	margin-top: 40px;
 }
 
 .login_body{
 
 	background: image-url('bg.jpg');
-	background-size: 100% 120%;
+	background-size: 0px 0px;
 	
 }
+
+.title{
+	height: 130px;
+	width: 480px;
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	border: 1px solid black;
+	padding-bottom: 0px;
+}
+

@@ -1,5 +1,9 @@
+<%= image_tag "title.png", class: "title" %>
+
 <% content_for :body_class, "login_body" %>
 <div class="banner">
+  
+  
   <!--
   <div>
     <h2 style="text-align: center;">Muriqui</h4>
@@ -11,8 +15,9 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <div class="form-container">
+        <div class="inner-form-container">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field" style="color: #f0f0f0">
+    <div class="field" style="color: #f0f0f0;">
       <%= f.label :email %><br />
       <div style="color: #191919">
       <%= f.email_field :email, autofocus: true %>
@@ -22,7 +27,7 @@
     <div class="field" style="color: #f0f0f0">
       
       <%= f.label :password %><br />
-      <div class="field" style="color: #191919">
+      <div style="color: #191919">
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
   </div>
@@ -33,23 +38,19 @@
         <%= f.label :remember_me %>
       </div>
     <% end -%>
+  </div>
 
-    <div class="actions" style="width: 50px; margin: 0 auto;">
+    <div class="actions" style="width: 50px; margin: 0 auto; margin-top: 30px">
       <%= f.submit "Log in" %>
     </div>
     <div class= "link">
     <%= link_to "Forgot Password", "/users/password/new", :method => :get %>
     <br>
-    <%= link_to "Sign Up", "/users/sign_up", :method => :get %>
+    <%= link_to "Sign Up", "/users/sign_up",  class: "link_to", :method => :get %>
     <br>
     <%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get %></div>
   </div>
     </div>
-  </div>
-  <div class="row" style="margin-top: 40px;">
-  <div class="col-md-3"></div>
-    <div class="col-md-3" style="border-bottom: 1px solid black"></div>
-      <div class="col-md-3" style="border-bottom: 1px solid black"></div>
   </div>
 
     <div class="row">
@@ -58,4 +59,9 @@
     </div>
   </div>
   <% end %>
+  <script type="text/javascript">
+  var height = $(document).height();
+  var width = $(document).width();
+    $('.login_body').css({"background-size": width+"px"+" "+height+"px"});
+  </script>
 </div>

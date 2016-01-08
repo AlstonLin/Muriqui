@@ -34,10 +34,6 @@ var ready = function(){
       scrollbarStyle: "null"
     });
   });
-
-
-
-  $('.motto').slideDown(1000);
 };
 
 $(document).ready(ready);
