@@ -7,8 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <body class=<%= yield :body_class %>>
+<body class=<%= yield :body_class %>>
   <!-- Navigation bar -->
   <% if current_user %>
     <%= render :partial => "shared/navbar" %>
@@ -19,7 +18,7 @@
     <%= yield %>
   </div>
 </body>
-<footer class="text-center">
+<footer class="text-center footer">
   Created by <a href="http://alstonlin.io">Alston Lin</a>.
   Designed by <a href="http://utkarshlamba.com">Utkarsh Lamba</a>
 </footer>

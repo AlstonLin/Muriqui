@@ -14,26 +14,21 @@
  *= require codemirror
  */
 
+//--------------------------------CODE MIRROR-----------------------------------
 .CodeMirror {
    height: auto !important;
  }
 
-span.glyphicon-large {
-  font-size: 2em;
-  margin-top: 15px;
-}
-
 .form-container {
 	border: 1px dashed black;
 	background: rgba(38, 38, 38, 0.87);
-	/*background-color: rgba(38,38,38, 0.6);*/
 	width: 369px;
 	height: 380px;
 	padding: 20px;
 	border-radius: 3px;
 	margin: 0 auto;
 }
-
+ //-------------------------------NAVIGATION BAR--------------------------------
 .navbar-brand-style {
   color: white !important;
   margin-top: 3px;
@@ -61,14 +56,14 @@ span.glyphicon-large {
   margin-top: 12px;
   margin-right: 10px;
 }
-
+//----------------------------COMMON STYLINGS-----------------------------------
 .panel-heading-style {
-  background-color: #1565C0;
+  background-color: #00796B;
   color: white;
 }
 
 .btn-style {
-  background-color: #0D47A1;
+  background-color: #00796B;
   color: white;
   margin-right: 5px;
 }
@@ -76,6 +71,7 @@ span.glyphicon-large {
 .field{
 	margin-top: 20px;
 	font-size: 20px;
+  text-align: center;
 }
 
 .link{
@@ -85,8 +81,9 @@ span.glyphicon-large {
 }
 
 .link_to{
-color: red;
+  color: red;
 }
+
 .link_to:hover{
 	background-color: none;
 }
@@ -95,45 +92,236 @@ color: red;
   margin-left: 10px;
 }
 
-.login_button{
-	font-family: Arial-black;
-	width: 369px;
-	height: 70px;
-	display: block;
-	position: relative;
-	margin: auto;
-	margin-top: 40px;
-	background: image-url('facebook_login_logo.png');
-	background-size: 369px 70px;
-	padding: 0px 0px 0px 0px;
-	opacity: 0.9;
-	border: none;
+.footer {
+  margin-top: 15px;
+}
+//-------------------------------------LOGIN PAGE-------------------------------
+
+@font-face {
+   font-family: 'adam_cg';
+   src: url("assets/adam_cg.otf") format("opentype");
 }
 
-.login_button:hover{
-	opacity: 1;
+#loginform {
+  width: 750px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
 }
 
-.banner{
-	width: 50%;
-	background-color: rgba(255,255,255, 0.6);
-	padding-bottom: 30px;
-	padding-top: 30px;
-	margin: auto;
+.login-body {
+  background-color: #26A69A;
 }
 
-.login_body{
-	background: image-url('bg.jpg');
-	background-size: 100% 120%;
+.login-title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 128px;
+  font-weight: bolder;
+  text-align: center;
+  color: white;
+  font-family: 'adam_cg';
 }
 
-.title{
-	height: 130px;
-	width: 480px;
-	display: block;
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 0px;
-	border: 1px solid black;
-	padding-bottom: 0px;
+.login-field {
+  display: block;
+  margin: 0px auto 15px;
+  border-radius: 5px;
+  background: #333333;
+  width: 70%;
+  padding: 12px 20px 12px 10px;
+  border: none;
+  color: #929999;
+  box-shadow: inset 0px 1px 5px #272727;
+  font-size: 0.8em;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
+
+.login-field:focus {
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+  box-shadow: 0px 0px 5px 1px #161718;
+}
+
+.login-button {
+  background: #ff5f32;
+  border-radius: 50%;
+  border: 10px solid #222526;
+  font-size: 0.9em;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  right: -42px;
+  top: 54px;
+  text-align: center;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.login-buttonbutton:hover {
+  background: #222526;
+  border-color: #ff5f32;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.login-buttonbutton i {
+  font-size:20px;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.login-button:hover i {
+  color:#ff5f32;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #929999;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: #929999;
+}
+
+:-ms-input-placeholder {
+  color: #929999;
+}
+
+.login-heading {
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  padding: 12px 0px;
+}
+
+#note {
+  color: #88887a;
+  font-size: 0.8em;
+  text-align: center;
+  padding-left: 5px;
+}
+
+#facebook {
+  text-align: center;
+  float: left;
+  background: #365195;
+  padding: 35px 10px 20px 10px;
+  width: 250px;
+  height: 210px;
+  border-radius: 3px;
+  cursor:pointer;
+  box-shadow: 0px 0px 10px 2px #161718;
+  margin-right: 10px;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+#facebook:hover {
+  box-shadow: 0px 0px 0px 0px #161718;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.fa-facebook {
+  color: #fff;
+  font-size: 12em;
+  display: block;
+}
+
+.login-link, .login-link:visited {
+  color: white;
+  text-decoration:none;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.login-link:hover {
+  color: #fff;
+  margin-left: 5px;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+#mainlogin {
+  float: left;
+  width: 400px;
+  height: 300px;
+  padding: 10px 15px;
+  position: relative;
+  background: #555555;
+  border-radius: 3px;
+}
+
+#connect {
+  font-weight: bold;
+  color: #fff;
+  font-size: 13px;
+  text-align: left;
+  font-family: verdana;
+  padding-top: 10px;
+}
+
+#or {
+  position:absolute;
+  left: -30px;
+  top: 15px;
+  background: #222222;
+  text-shadow: 0 2px 0px #121212;
+  color: #999999;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: bold;
+  line-height: 50px;
+  font-size: 18px;
+}
+
+#remember-me {
+  display: inline-block;
+  color: white;
+  margin-left: 60px;
+}
+
+#remember-me-checkbox {
+  float: right;
+  margin-right: 60px;
+}
+
+//----------------------REGISTRATION RELATED PAGES------------------------------

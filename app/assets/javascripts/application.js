@@ -19,6 +19,7 @@
 //= require codemirror/modes/python
 //= require codemirror/modes/clike
 
+//--------------STUFF TO RUN WHEN PAGE IS LOADED--------------------------------
 var ready = function(){
   $("#codemirror").each(function() {
     CodeMirror.fromTextArea($(this).get(0), {
@@ -35,12 +36,9 @@ var ready = function(){
       scrollbarStyle: "null"
     });
   });
-  $('.motto').slideDown(1000);
 };
-
 $(document).ready(ready);
 $(document).on('page:load', ready);
-
 // Google Analytics
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-72131602-2']);

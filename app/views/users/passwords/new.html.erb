@@ -1,18 +1,20 @@
-<div style="background-color: #f0f0f0; width: 400px; margin: auto; padding: 20px; margin-top: 20px;";>
-<div class="inner-form-container">
-<h2>Forgot your password?</h2>
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading panel-heading-style">
+      <h1 class="text-center">Forgot your password?</h1>
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field" style="margin-top: 30px">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+        <div class="field">
+          <h3><%= f.label :email %></h3>
+          <%= f.email_field :email, class: "input input-lg"%>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Send me reset password instructions", class: "btn btn-style btn-lg" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="actions" style="margin: auto; width: 275px; margin-top: 40px">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-</div>
 </div>
