@@ -9,7 +9,7 @@
         <div class="field">
 					<%= f.label :email %><br />
 			    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "input input-lg" %>
-          <div style="width: 27%; margin: 0 auto;">
+          <div  align="center">
             <%= recaptcha_tags %>
           </div>
         </div>

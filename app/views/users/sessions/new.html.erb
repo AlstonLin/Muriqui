@@ -1,32 +1,38 @@
 <% content_for :body_class, "login-body" %>
 <div class="container">
   <h1 class="login-title">Muriqui</h1>
-  <div id="loginform">
-    <%= link_to user_omniauth_authorize_path(:facebook), :method => :get do %>
-      <div id="facebook">
-        <i class="fa fa-facebook"></i>
-      </div>
-    <% end %>
-    <div id="mainlogin">
-      <div id="or">OR</div>
-      <h1 class="login-heading">Sign In with Email</h1>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <!-- Form Fields -->
-        <%= f.email_field :email, placeholder: "Email", class: "login-field" %>
-        <%= f.password_field :password, placeholder: "Password", class: "login-field" %>
-        <%= f.label :remember_me, class: "center-block" do %>
-          <div id="remember-me">Remember Me</div>
-          <%= f.check_box :remember_me, id: "remember-me-checkbox" %>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div id="loginform">
+        <%= link_to user_omniauth_authorize_path(:facebook), :method => :get do %>
+          <div id="facebook">
+            <i class="fa fa-facebook"></i>
+          </div>
         <% end %>
+        <div id="mainlogin">
+          <div id="or">OR</div>
+          <h1 class="login-heading">Sign In with Email</h1>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <!-- Form Fields -->
+            <%= f.email_field :email, placeholder: "Email", class: "login-field" %>
+            <%= f.password_field :password, placeholder: "Password", class: "login-field" %>
+            <%= f.label :remember_me, class: "center-block" do %>
+              <div id="remember-me">Remember Me</div>
+              <%= f.check_box :remember_me, id: "remember-me-checkbox" %>
+            <% end %>
 
-        <%= button_tag type: 'submit', class: "login-button" do %>
-          <i class="fa fa-arrow-right"></i>
-        <% end %>
-      <% end %>
-      <br>
-      <div id="note"><%= link_to "Forgot Password", "/users/password/new", :method => :get, class: "login-link" %></div>
-      <div id="note"><%= link_to "Sign Up", "/users/sign_up",  class: "link_to", :method => :get, class: "login-link" %></div>
-      <div id="note"><%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %></div>
+            <%= button_tag type: 'submit', class: "login-button" do %>
+              <i class="fa fa-arrow-right"></i>
+            <% end %>
+          <% end %>
+          <br>
+          <div id="note"><%= link_to "Forgot Password", "/users/password/new", :method => :get, class: "login-link" %></div>
+          <div id="note"><%= link_to "Sign Up", "/users/sign_up",  class: "link_to", :method => :get, class: "login-link" %></div>
+          <div id="note"><%= link_to "Resend Confirmation Email", "/users/confirmation/new", :method => :get, class: "login-link" %></div>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="col-md-2"></div>
+  <div>
 </div>
