@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   # Validation
   validates :name, presence: true
   validates :email, presence: true
-  validates_format_of :email, with: /\@uwaterloo\.ca/, message: 'You must use a @uwaterloo.ca email',
-    :unless => Proc.new { |u| u.uid? }
+  validates_format_of :email, with: /.+@.+\..+/i,
+    message: 'You must use a valid @uwaterloo.ca email', :unless => Proc.new { |u| u.uid? }
   # Auth
   devise :omniauthable, :database_authenticatable, :confirmable, \
    :registerable, :recoverable, :rememberable, :trackable, :validatable

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
   #Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
-    :registrations => "registrations" }
+    :registrations => "registrations", :confirmations => "confirmations",
+    :passwords => "passwords" }
   #Routing links to controllers
   get '/privacy', to: 'application#privacy'
   #Resources
