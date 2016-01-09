@@ -11,11 +11,11 @@
 <div class="panel">
 	<div class="panel-heading panel-heading-style">
 		<% if current_user &&  current_user.admin %>
-			<%= button_to "New Problem", new_assignment_problem_path(@assignment), class: "btn btn-lg btn-style", :method => :get %>
+			<%= button_to "New Problem", new_assignment_problem_path(@assignment), class: "btn btn-lg btn-white", :method => :get %>
 		<% end %>
 	</div>
 
-	<div class="panel-body" id="problems_panel">
+	<div class="panel-body panel-body-style" id="problems_panel">
 		<%= render partial: "problems/problem_list", :locals => { assignment: @assignment } %>
 	</div>
 </div>

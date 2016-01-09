@@ -37,7 +37,7 @@
 }
 
 .nav-style {
-  background-color: #0D47A1;
+  background-color: #26A69A;
   border: none;
   border-radius: 0px;
   height: 60px;
@@ -60,6 +60,22 @@
 .panel-heading-style {
   background-color: #00796B;
   color: white;
+}
+
+.panel-body-style{
+  background-color: #FAFAFA;
+  color: #004D40;
+}
+
+.btn-std{
+	margin-left: 20px;
+}
+
+.btn-white {
+  background-color: white;
+  color: #00796B;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .btn-style {
@@ -214,8 +230,10 @@
 .login-heading {
   text-align: center;
   color: #fff;
-  font-size: 13px;
-  padding: 12px 0px;
+  font-size: 21px;
+  padding-top: 0px;
+  padding-bottom: 5px;
+  font-weight: bold;
 }
 
 #note {
@@ -316,7 +334,9 @@
 #remember-me {
   display: inline-block;
   color: white;
+  font-weight: normal;
   margin-left: 60px;
+  font-size: 14px;
 }
 
 #remember-me-checkbox {

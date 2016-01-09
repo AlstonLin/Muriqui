@@ -12,10 +12,10 @@
 
 			<div class="col-md-3 col-md-offset-1"">
 				<% if current_user.admin %>
-					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-left btn-lg panel-btn btn_std", :method => :get %>
-					<%= button_to "Delete", course_remove_path(c), class: "btn btn-danger pull-left btn-lg btn_std", :method => :get, remote: true %>
+					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-left btn-lg panel-btn btn-std", :method => :get %>
+					<%= button_to "Delete", course_remove_path(c), class: "btn btn-danger pull-left btn-lg btn-std", :method => :get, remote: true %>
 				<% else %>
-					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-right btn-lg panel-btn btn_std", :method => :get %>
+					<%= button_to "Enter", course_path(c), class: "btn btn-success pull-right btn-lg panel-btn btn-std", :method => :get %>
 				<% end %>
 			</div>
 		</div>

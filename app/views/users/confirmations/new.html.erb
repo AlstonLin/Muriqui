@@ -3,7 +3,7 @@
     <div class="panel-heading panel-heading-style">
       <h1 class="text-center">Resend confirmation instructions</div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body panel-body-style">
 			<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
 			  <%= devise_error_messages! %>
         <div class="field">
