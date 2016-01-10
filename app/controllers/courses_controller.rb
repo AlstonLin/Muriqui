@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
 	#-----------------------DEFAULT RESTFUL ACTIONS-------------------------------
 	def index
 		if current_user
-			@courses = Course.all
+			@courses = Course.order(:code)
 			@course = Course.new
 		end
 	end

@@ -1,5 +1,7 @@
 class Problem < ActiveRecord::Base
 	self.primary_key = 'id'
+	# Sorting
+	default_scope { order 'number ASC' }
 	# Relationships
 	has_many :test_cases
 	belongs_to :assignment

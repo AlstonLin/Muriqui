@@ -1,5 +1,7 @@
 class Assignment < ActiveRecord::Base
 	self.primary_key = 'id'
+	# Sorting
+	default_scope { order 'due ASC' }
 	# Relationships
 	has_many :problems
 	belongs_to :course
