@@ -1,0 +1,27 @@
+<% if !t.removed %>
+  <div class="col-md-4">
+    <h2>Input</h2> <%= simple_format t.input, { style: 'word-wrap: break-word;' }, wrapper_tag: 'h3' %>
+  </div>
+  <div class="col-md-4">
+    <h2>Output</h2> <%= simple_format t.output, { style: 'word-wrap: break-word;' }, wrapper_tag: 'h3' %>
+  </div>
+  <!--- The user is an ADMIN -->
+  <% if current_user.admin || current_user == t.creator %>
+      <div class="col-md-1">
+        <h3><%= link_to '⚑' + t.flaggers.count.to_s, test_case_toggle_flag_path(t), remote: true,
+          :style => t.flaggers.include?(current_user) ? 'color: red;' : 'color: black;' %></h3>
+      </div>
+      <div class="col-md-1">
+        <h3><%= link_to '✖', test_case_remove_path(t), remote: true %></h3>
+      </div>
+      <div class="col-md-1">
+        <h3><%= link_to '✎', test_case_edit_path(t), remote: true %></h3>
+      </div>
+  <!-- REGULAR user -->
+  <% else %>
+    <div class="col-md-1 col-md-offset-1">
+      <h3><%= link_to '⚑' + t.flaggers.count.to_s, test_case_toggle_flag_path(t), remote: true,
+        :style => t.flaggers.include?(current_user) ? 'color: red;' : 'color: black;' %></h3>
+    </div>
+  <% end %>
+<% end %>

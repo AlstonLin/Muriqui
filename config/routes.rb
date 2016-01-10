@@ -23,6 +23,8 @@ Rails.application.routes.draw do
         resources :test_cases, shallow: true do
           get 'toggle_flag'
           get 'remove'
+          get 'edit'
+          get 'cancel'
         end
       end
     end

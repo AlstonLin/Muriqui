@@ -1,28 +1,5 @@
 <% problem.test_cases.each do |t| %>
-  <% if !t.removed %>
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Input</h2> <%= simple_format t.input, { style: 'word-wrap: break-word;' }, wrapper_tag: 'h3' %>
-      </div>
-      <div class="col-md-4">
-        <h2>Output</h2> <%= simple_format t.output, { style: 'word-wrap: break-word;' }, wrapper_tag: 'h3' %>
-      </div>
-      <!--- The user is an ADMIN -->
-      <% if current_user.admin || current_user == t.creator %>
-          <div class="col-md-2">
-            <h3><%= link_to '⚑' + t.flaggers.count.to_s, test_case_toggle_flag_path(t), remote: true,
-              :style => t.flaggers.include?(current_user) ? 'color: red;' : 'color: black;' %></h3>
-          </div>
-          <div class="col-md-2">
-            <h3><%= link_to '✖', test_case_remove_path(t), remote: true %></h3>
-          </div>
-      <!-- REGULAR user -->
-      <% else %>
-        <div class="col-md-4">
-          <h3><%= link_to '⚑' + t.flaggers.count.to_s, test_case_toggle_flag_path(t), remote: true,
-            :style => t.flaggers.include?(current_user) ? 'color: red;' : 'color: black;' %></h3>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="row" id=<%= "test" + t.id.to_s %> >
+    <%= render partial: "test_case_row", :locals => { t: t } %>
+  </div>
 <% end %>

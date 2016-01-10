@@ -1,0 +1,1 @@
+$("<%= '#test' + @test_case.id.to_s %>").html('<%= escape_javascript (render partial: "edit_test_case", :locals => { test_case: @test_case }) %>');

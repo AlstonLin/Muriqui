@@ -1,0 +1,24 @@
+
+<div class="col-md-10 col-md-offset-1">
+  <%= form_for test_case, :html => {class: "form-inline row"}, remote: true do |form| %>
+    <div class="col-md-4">
+      <h2>Input</h2> <%= form.text_area :input, class: "form-control input-lg form-control",
+        placeholder: "Input", id: "input-field", style: "height: 150px;"  %>
+    </div>
+    <div class="col-md-4">
+      <h2>Output</h2> <%= form.text_area :output, class: "form-control input-lg form-control",
+        placeholder: "Ouput", id: "output-field", style: "height: 150px;"  %>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <br><br><br><br>
+        <%= form.submit "Update Test Case", class: "btn btn-style btn-lg"%>
+      </div>
+        <% end %>
+        <br>
+      <div class="text-center">
+        <%= link_to "Cancel", test_case_cancel_path(test_case), :remote => true,
+          class: "btn btn-danger btn-lg" %>
+      </div>
+  </div>
+</div>

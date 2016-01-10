@@ -25,6 +25,31 @@ class TestCasesController < ApplicationController
       end
     end
 	end
+
+  def update
+    @test_case = TestCase.find(params[:id])
+    raise "Unauthorized Access!" unless @test_case.creator == current_user || current_user.admin
+		@problem = @test_case.problem
+
+		respond_to do |format|
+			if @test_case.update_attributes(test_case_params)
+        flash[:alert] = "Successfully Updated"
+				@problem.generated_source = @problem.generate_source
+				@problem.save
+				format.html  {
+					render :text => 'This page should not be shown.'.html_safe
+				}
+				format.json  { render :json => @test_case, :status => :success, :location => @test_case }
+				format.js
+			else
+        flash[:alert] = "There was a problem while updating"
+				format.html  {
+					render :text => "There was an error while updating the Test Case".html_safe
+				}
+				format.json  { render :json => @test_case.errors, :status => :unprocessable_entity }
+			end
+		end
+  end
 	#---------------------OTHER RESTFUL ACTIONS-----------------------------------
 	def toggle_flag
 		raise "Must be logged in to flag a test case!" unless current_user
@@ -67,6 +92,24 @@ class TestCasesController < ApplicationController
 			end
 		end
 	end
+
+  def edit
+    @test_case = TestCase.find(params[:test_case_id])
+    raise "Unauthorized Access!" unless @test_case.creator == current_user || current_user.admin
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def cancel
+    @test_case = TestCase.find(params[:test_case_id])
+    raise "Unauthorized Access!" unless @test_case.creator == current_user || current_user.admin
+    respond_to do |format|
+      format.html { render :text => "TEST" }
+      format.js
+    end
+  end
+
 	#---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def test_case_params
 			params.require(:test_case).permit(:input, :output)
