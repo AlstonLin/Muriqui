@@ -1,15 +1,15 @@
 <%= form_for [@problem, @test_case], :html => {class: "form-inline row"}, remote: true do |form| %>
 
   <div class="col-md-4">
-    <%= form.text_field :input, class: "form-control input-lg", placeholder: "Input", id: "input-field"  %>
+    <%= form.text_area :input, class: "form-control input-lg", placeholder: "Input", id: "input-field", style: "height: 150px;"  %>
   </div>
 
   <div class="col-md-4">
-    <%= form.text_field :output, class: "form-control input-lg", placeholder: "Ouput", id: "output-field"  %>
+    <%= form.text_area :output, class: "form-control input-lg", placeholder: "Ouput", id: "output-field", style: "height: 150px;"  %>
   </div>
 
   <div class="col-md-4">
-    <%= form.submit "Create Test Case", class: "btn btn-white pull-right btn-lg" %>
+    <%= form.submit "Create Test Case", class: "btn btn-white pull-right btn-lg", style: "margin-top: 50px" %>
   </div>
 
 <% end %>

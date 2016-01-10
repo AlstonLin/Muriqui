@@ -2,10 +2,10 @@
   <% if !t.removed %>
     <div class="row">
       <div class="col-md-4">
-        <h3>Input - <%= t.input %></h3>
+        <h2>Input</h2> <%= simple_format t.input, {}, wrapper_tag: 'h3' %>
       </div>
       <div class="col-md-4">
-        <h3>Output - <%= t.output %></h3>
+        <h2>Output</h2> <%= simple_format t.output, {}, wrapper_tag: 'h3' %>
       </div>
       <!--- The user is an ADMIN -->
       <% if current_user.admin || current_user == t.creator %>

@@ -107,15 +107,20 @@ class Problem < ActiveRecord::Base
 		counter = 0
 		self.test_cases.each do |test|
 			if !test.removed
+				input = test.input.dup
+				output = test.output.dup
+				input.gsub! /\r\n/, '\\n'
+				output.gsub! /\r\n/, '\\n'
 				test_string = test_loop.dup
 				test_string.gsub! '{{index}}', counter.to_s
-				test_string.gsub! '{{input}}', test.input
-				test_string.gsub! '{{output}}', test.output
+				test_string.gsub! '{{input}}', input
+				test_string.gsub! '{{output}}', output
 				generated_source += test_string
 				counter += 1
 			end
 		end
 		generated_source += after
+		# Subs /r/n with //n for the code
 		return generated_source
 	end
 
