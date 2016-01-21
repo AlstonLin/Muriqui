@@ -1,0 +1,13 @@
+<div class="page-header" style="margin-top: 0px;">
+	<h1>Templates</h1>
+</div>
+
+<div class="panel">
+	<div class="panel-heading panel-heading-style">
+		<%= button_to "New Template", new_template_path, class: "btn btn-lg btn-white", :method => :get %>
+	</div>
+
+	<div class="panel-body panel-body-style" id="templates_panel">
+		<%= render partial: 'templates_list', :locals => { templates: @templates } %>
+	</div>
+</div>

@@ -14,7 +14,7 @@
         <div id="mainlogin">
           <div id="or">OR</div>
           <h1 class="login-heading">Sign In with Email</h1>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
             <!-- Form Fields -->
             <%= f.email_field :email, placeholder: "Email", class: "login-field" %>
             <%= f.password_field :password, placeholder: "Password", class: "login-field" %>

@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
-  #Defines root page
+  # Defines root page
   authenticated :user do
     root to: "courses#index", :as => :authenticated_root
   end
   unauthenticated do
     root to: redirect("/users/sign_in")
   end
-  #Auth
+  # Auth
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "registrations", :confirmations => "confirmations",
     :passwords => "passwords" }
-  #Routing links to controllers
+  # Routing links to controllers
   get '/privacy', to: 'application#privacy'
-  #Resources
+  # Resources
+  resources :templates do
+    get 'remove'
+    get 'fill_form'
+  end
+
   resources :courses do
     get 'remove'
     resources :assignments, shallow: true do
       get 'remove'
       resources :problems, shallow: true do
         get 'remove'
-        get 'get_mode_template'
         resources :test_cases, shallow: true do
           get 'toggle_flag'
           get 'remove'

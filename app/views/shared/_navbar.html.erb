@@ -24,6 +24,13 @@
               class: 'btn pull-right btn-default navbar-btn nav-btn-style' %>
             </li>
           <% end %>
+          <!-- Admin -->
+          <% if current_user.admin %>
+            <li>
+              <%= button_to "Templates", templates_path, :method => :get,
+              class: 'btn pull-right btn-default navbar-btn nav-btn-style' %>
+            </li>
+          <% end %>
           <!-- Logout Button -->
           <li>
             <%= button_to "Logout", "/users/sign_out", :method => :delete,

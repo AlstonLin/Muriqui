@@ -10,8 +10,7 @@ class Problem < ActiveRecord::Base
 	# Validation
 	validates :number, presence: true
 	validates :creator, presence: true
-	validates :source, presence: true
-	validates :instructions, presence: true
+	validates :source, presence:
 	#--------------------------TEMPLATES------------------------------------------
 	# TODO: Have course creator make them?
 	PYTHON_PRINT_TEMPLATE = ['import sys',
@@ -75,10 +74,17 @@ class Problem < ActiveRecord::Base
 		'	cout << "Passed All Test Cases"',
 	'}'].join("\n") + "\n"
 
+  INSTRUCTIONS_TEMPLATE_PYTHON = ['1. If you have not already, install Python',
+    '2. Copy and Paste the code below into a new file, muriqui.py',
+    '3. Put muriqui.py in the same directory as your compiled program',
+    '4. Open the terminal and go to the directory of muriqui.py',
+    '5. Run the test by entering the following command into the terminal: python muriqui.py COMPILED_FILE_NAME'].join("\n") + "\n"
+
 	MODES = {"Python" => "text/x-python", "C++" => "text/x-c++src"}
 	#------------------INSTANCE METHODS-------------------------------------------
 	def initialize(attributes={}, options={})
-    attr_with_defaults = {:source => PYTHON_PRINT_TEMPLATE}.merge(attributes)
+    attr_with_defaults = {:source => PYTHON_PRINT_TEMPLATE,
+			:instructions => INSTRUCTIONS_TEMPLATE_PYTHON}.merge(attributes)
     super(attr_with_defaults)
   end
 

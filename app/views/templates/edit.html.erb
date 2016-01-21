@@ -1,0 +1,54 @@
+<div class="page-header">
+	<h2>Edit Template</h2>
+</div>
+
+<div class="panel">
+	<div class="panel-body" id="problems_panel">
+    <%= form_for [@template], validate: true do |form| %>
+		<!-- Form at the heading -->
+    <div class="col-md-10 col-md-offset-1">
+        <%= form.text_field :name, class: "form-control input-lg", placeholder: "Template Name" %>
+    </div>
+		<!-- Instructions -->
+		<div class="col-md-10 col-md-offset-1">
+			<h3> <%= form.label :instructions,  "Instructions" %> </h3>
+      <%= form.text_area :instructions, class: "form-control", placeholder: "Instructions Here",
+			style: "width:100%; height:250px;" %>
+    </div>
+		<!-- Text area for code -->
+    <div class="col-md-10 col-md-offset-1">
+			<div class="row">
+				<h3 style="display: inline-block;"> <%= form.label :source,  "Template Code" %> </h3>
+				<div class="pull-right">
+					<br>
+					<%= form.select :mode, ::Template::MODES, {}, class: "form-control",
+					onChange: "changeMode();" %>
+				</div>
+			</div>
+			<div class="codemirror-pane">
+      	<%= form.text_area :code, class: "form control", id: "codemirror" %>
+			</div>
+		</div>
+		<!-- Submit button -->
+    <div class="form-group text-center">
+      <%= form.submit "Update Template", class: "btn btn-style btn-lg" %>
+    </div>
+    <% end %>
+	</div>
+</div>
+<script>
+	var codeMirror;
+	var changeMode = function(){
+		codeMirror.setOption("mode", $('#template_mode').val());
+	}
+	var ready = function(){
+			var current = $('template_mode').val();
+			codeMirror = CodeMirror.fromTextArea($('#codemirror')[0], {
+				lineNumbers: true,
+				mode: current ? current : "<%= ::Template::MODES[0] %>",
+				height: "300px"
+			});
+	};
+	$(document).ready(ready);
+	$(document).on('page:load', ready);
+</script>

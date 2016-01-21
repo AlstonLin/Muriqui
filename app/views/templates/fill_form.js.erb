@@ -1,0 +1,4 @@
+$('#instructions').val('<%= raw j @template.instructions %>');
+$("#template_mode").val('<%= @template.mode %>');
+codeMirror.doc.setValue('<%= raw j @template.code %>');
+changeMode();

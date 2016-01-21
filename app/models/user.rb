@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :problems_removed, :class_name => 'Problem', :foreign_key => 'remover_id'
   has_many :test_cases_created, :class_name => 'TestCase', :foreign_key => 'creator_id'
   has_many :test_cases_removed, :class_name => 'TestCase', :foreign_key => 'remover_id'
+  has_many :templates_created, :class_name => 'Template', :foreign_key => 'creator_id'
+  has_many :templates_removed, :class_name => 'Template', :foreign_key => 'remover_id'
   # Validation
   validates :name, presence: true
   validates :email, presence: true
@@ -23,7 +25,6 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.name = auth.info.name
       user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
       user.image = auth.info.image # assuming the user model has an image
       user.skip_confirmation!
     end

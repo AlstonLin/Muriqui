@@ -13,3 +13,18 @@
 </div>
 <h3><%= simple_format @problem.instructions, {}, wrapper_tag: "h4" %></h3>
 <%= render :partial => "test_source", :locals => { problem: @problem } %>
+
+<script>
+	var ready = function(){
+	  $("#codemirror-read").each(function() {
+	    CodeMirror.fromTextArea($(this).get(0), {
+	      lineNumbers: true,
+	      mode: "<%= @problem.mode %>",
+	      readOnly: true,
+	      scrollbarStyle: "null"
+	    });
+	  });
+	};
+	$(document).ready(ready);
+	$(document).on('page:load', ready);
+</script>

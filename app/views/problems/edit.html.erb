@@ -15,7 +15,7 @@
 <% if  current_user && current_user.admin %>
 	<div class="panel panel-success">
 		<div class="panel-body" id="problems_panel">
-	    <%= form_for @problem do |form| %>
+	    <%= form_for @problem, validate: true do |form| %>
 				<!-- Heading at the top -->
 		    <div class="row">
 		      <div class="form-group col-md-4 col-md-offset-2">
@@ -46,3 +46,16 @@
 <% else %>
 You're Not Authorized! Nice Try.
 <% end %>
+
+<script>
+	var ready = function(){
+		$("#codemirror").each(function() {
+			CodeMirror.fromTextArea($(this).get(0), {
+				lineNumbers: true,
+				mode: "<%= @problem.mode %>"
+			});
+		});
+	};
+	$(document).ready(ready);
+	$(document).on('page:load', ready);
+</script>

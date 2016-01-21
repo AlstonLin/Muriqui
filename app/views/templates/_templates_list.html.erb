@@ -1,0 +1,17 @@
+<% templates.each do |t| %>
+  <% if !t.removed %>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        <h3><%= t.name %></h3>
+      </div>
+      <div class="col-md-4">
+        <% if current_user.admin %>
+          <%= button_to "Edit", edit_template_path(t), class:"btn btn-info pull-left btn-lg panel-btn", :method => :get%>
+          <%= button_to "Delete", template_remove_path(t), class:"btn btn-danger pull-left btn-lg panel-btn", :method => :get, remote: true %>
+        <% else %>
+          <%= button_to "View", template_path(t), class:"btn btn-success pull-right btn-lg", :method => :get %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -8,7 +8,7 @@ class ProblemsController < ApplicationController
 	def create
 		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
 		@assignment = Assignment.find(params[:assignment_id])
-		@problem = @assignment.problems.build(problem_params)
+		@problem = @assignment.problems.new(problem_params)
 		@problem.assignment = @assignment
 		@problem.creator = current_user
 	  @problem.generated_source = @problem.generate_source
@@ -19,7 +19,8 @@ class ProblemsController < ApplicationController
 		raise "You must be logged in to access this." unless current_user
 		@assignment = Assignment.find(params[:assignment_id])
 		@course = @assignment.course
-		@problem = @assignment.problems.build
+		@problem = Problem.new
+		@templates = Template.all
 	end
 
 	def edit
@@ -59,6 +60,17 @@ class ProblemsController < ApplicationController
 		@problem = Problem.find(params[:problem_id])
 		@assignment = @problem.assignment
 		remove_object @problem
+	end
+
+	def get_template
+		raise "Unauthorized Access! You must be an admin to do this." unless current_user.admin
+		puts "----------------TEMPLATES ID=|" + params[:template_id] + "|-------------------"
+		@template = Template.find(params[:template_id])
+		respond_to do |format|
+			if @template
+				format.js
+			end
+		end
 	end
 	#---------------------EXTERNALIZED FUNCTIONS----------------------------------
 	def problem_params
